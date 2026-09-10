@@ -1,0 +1,2126 @@
+EX-10.4 12 d805815dex104.htm EX-10.4
+Exhibit 10.4
+
+EXECUTION VERSION
+
+Certain information in this document, designated by [***], has been excluded pursuant to Item 601(b)(10)(iv) of Regulation S-K under the Securities Act of 1933, as amended, because it is both (i) not material and (ii) the type that the registrant treats as private or confidential.
+
+Master Agreement
+
+for the Rendering of Services (“Master Services Agreement”)
+
+between
+
+Swiss Towers AG
+
+Binzmühlestrasse 130
+
+8050 Zürich
+
+hereinafter “TowerCo”
+
+and
+
+Sunrise Communications AG
+
+Binzmühlestrasse 130
+
+8050 Zürich
+
+hereinafter “Sunrise”
+
+TowerCo and Sunrise hereinafter each individually referred to as “Party” and jointly referred to as the “Parties”
+
+Index
+
+
+
+§ 1 Definitions
+
+  	 	5
+§ 2 Interpretation
+
+  	 	11
+§ 3 Services Provided by TowerCo under this Master Services Agreement
+
+  	 	12
+§ 4 Service Levels and Key Performance Indicators
+
+  	 	16
+§ 5 The Passive Wireless Infrastructure
+
+  	 	16
+§ 6 Sharing Services on the TowerCo Infrastructure Network
+
+  	 	17
+§ 7 Changes in the Infrastructure
+
+  	 	19
+§ 8 Maintenance, Repair, Renewal and other structural measures relating to TowerCo’s Infrastructure Network, Shut-down	  	 	20
+§ 9 Liability and Indemnification
+
+  	 	22
+§ 10 Insurance
+
+  	 	23
+§ 11 Ensuring Public Safety
+
+  	 	24
+§ 12 Permits and other Legal Requirements
+
+  	 	24
+§ 13 Service Fee
+
+  	 	25
+§ 14 [***]
+
+  	 	26
+§ 15 Operating and other Ancillary Costs and Power Consumption Costs
+
+  	 	26
+§ 16 Due Date for Payment; Method of Payment
+
+  	 	27
+§ 17 Term and Termination of this Master Services Agreement
+
+  	 	27
+§ 18 Decommissioning Obligation on Termination
+
+  	 	32
+§ 19 Intentionally Left Blank
+
+  	 	32
+§ 20 Deployment of the TowerCo Infrastructure Network
+
+  	 	32
+§ 21 Actions in the TowerCo Infrastructure Network
+
+  	 	34
+§ 22 Optimisation of the TowerCo Infrastructure Network
+
+  	 	34
+§ 23 [***]
+
+  	 	34
+§ 24 Transfer of Rights and Obligations
+
+  	 	35
+§ 25 Change of Control; Transfer of Radio Tower Sites and Site Agreements
+
+  	 	35
+§ 26 Step-In Right of Sunrise
+
+  	 	37
+§ 27 Joint Use of the Database
+
+  	 	37
+§ 28 Storage of Personal Data
+
+  	 	38
+§ 29 Confidentiality
+
+  	 	38
+§ 30 Communications
+
+  	 	39
+§ 31 Preferred Supplier
+
+  	 	40
+§ 32 Steering Committee
+
+  	 	41
+
+
+2
+
+§ 33 Financial Information
+
+  	 	42
+§ 34 Reporting of TowerCo
+
+  	 	42
+§ 35 Final Provisions
+
+  	 	42
+§ 36 Effectiveness of this Master Services Agreement
+
+  	 	44
+
+
+3
+
+Preamble
+
+
+
+(A)
+Sunrise has transferred under the demerger plan dated 2 March 2017 by way of demerger (Abspaltung) pursuant to art. 29 letter (b) of the Federal Act on Merger, Demerger, Conversion and Transfer of Assets and Liabilities (FUSG) radio tower sites and passive wireless infrastructure to TowerCo (the “Demerger”). The Demerger became legally effective upon its registration in the commercial register with retroactive commercial effect as of 1 January 2017.
+
+
+
+(B)
+Sunrise Communications International S.A. and Skylight Sari, on the one hand, and Cellnex Switzerland AG, on the other hand, have agreed under the agreement for the sale and purchase of all the shares in TowerCo (the “SPA”) to sell and transfer all of the issued shares in TowerCo to Cellnex Switzerland AG and Cellnex Switzerland AG has agreed to buy and accept the transfer of those shares. TowerCo is the Beneficial Owner of the Passive Wireless Infrastructure, which it will integrate into its passive wireless infrastructure network (the “TowerCo Infrastructure Network”) for the mutual benefit of the Parties.
+
+
+
+(C)
+On 24 May 2017, Sunrise and TowerCo entered into the original master services agreement, which is amended and restated by this Master Services Agreement. Furthermore, the Parties intend to enter into (i) a transitional services agreement (the “TSA”) under which Sunrise will provide certain services to TowerCo during a transition period and (ii) a service level agreement (the “SLA”) under which Sunrise will also provide certain services to TowerCo as well as (iii) a Built-to-Suit Agreement (the “BTS”).
+
+
+
+(D)
+This Master Services Agreement aims to regulate the objectives of the Parties as well as the rights and obligations pursued by and relating to the provision, by TowerCo to Sunrise, of an infrastructure network solution that enables Sunrise to provide its customers with availability and continuity in its electronic communications services, current and future (the “Sunrise Services”).
+
+
+
+(E)
+The objective pursued by Sunrise under and in connection with this Master Services Agreement is, throughout the term, the provision of stable, high-quality, state of the art and competitive Sunrise Services. It is further the objective pursued by Sunrise under and in connection with this Master Services Agreement to further develop the mobile networks it operates in Switzerland (the objectives set out in the two previous sentences collectively, the “Sunrise Objectives”).
+
+
+
+(F)
+To this end, TowerCo shall provide Sunrise with the services specified in this Master Services Agreement (the “Services”).
+
+
+
+(G)
+TowerCo, as Beneficial Owner of the TowerCo Infrastructure Network, may in its entire discretion, execute all activities as it deems necessary, in particular, but not limited to, in terms of optimisation and deployment of the TowerCo Infrastructure Network ensuring, however, in any case that such activities do not adversely affect the provision of the Services to Sunrise in accordance with the terms of this Master Services Agreement.
+
+
+
+4
+
+Now, therefore, the Parties enter into the following Master Services Agreement
+
+§ 1
+
+Definitions
+
+The terms used in this Master Services Agreement shall have the meanings as defined below or elsewhere herein for the purposes of this Master Services Agreement:
+
+
+
+1.
+TowerCo’s Facilities and Space
+
+
+
+TowerCo Infrastructure Network
+Has the meaning ascribed to it in Preamble, para. (B).
+
+Passive Wireless Infrastructure
+Means all passive wireless infrastructure elements forming part of the Radio Tower Sites, i.e., the entire structural and technical facilities of TowerCo installed and/or present at the Radio Tower Sites made available to Sunrise, including:
+
+  	[***]
+  	[***]
+  	[***]
+  	[***]
+  	[***]
+  	[***]
+  	[***]
+  	[***]
+
+For the avoidance of doubt, elements such as the following do not form part of the Passive Wireless Infrastructure:
+
+  	[***]
+  	[***]
+  	[***]
+
+
+5
+
+ 	[***]
+ 	[***]
+ 	[***]
+ 	[***]
+ 	[***]
+
+
+2.
+Sunrise’s Facilities
+
+
+
+Antenna Systems
+
+
+Means the configurations of plane or rod antennas and any antenna amplifiers (including tower mounted amplifiers, LNA, etc.) including all necessary supply and discharge lines and/or related equipment as well as antenna brackets to mount directly to the antenna supports or any existing substructure but not the antenna supports themselves.
+
+Ancillary Equipment
+
+
+Means equipment different from Radio Equipment needed to operate the Antenna Systems, such as energy systems, batteries, Electricity metering equipment, air conditioner, tower mounted amplifier, etc.
+
+Radio Equipment
+
+
+Means System Technology and Antenna Systems of Sunrise including radio equipment, cables between the Antenna System and System Technology as well as cables between System Technology and line termination including any distributors (such as RF couplers, RF diplexers, etc.) between such technology and systems which can be identified, where applicable, all as installed and used in the TowerCo Infrastructure Network.
+
+System Technology
+
+
+Means the entire technical facilities of Sunrise, including, the sending and receiving devices and any intermediary or concentrating facility of Sunrise, but excluding the Antenna Systems.
+
+Unused Equipment
+
+
+Means Radio Equipment which is permanently out of use.
+
+
+
+6
+
+3.
+Other
+
+
+
+Additional Configuration
+
+
+Has the meaning ascribed to it in Exhibit 5.
+
+Affiliate
+
+
+Means, in relation to any person (i) any person Controlling (for the avoidance of doubt: directly or indirectly) that person, (ii) any person Controlled (for the avoidance of doubt: directly or indirectly) by such person, or (iii) any person under common Control with that person.
+
+Agreement or Master Services Agreement
+
+
+Means this master services agreement including any future modification or supplemental agreements and amendments.
+
+Beneficial Owner
+
+
+Means having a right in rem, a contractual right or a right based upon Swiss public law (e.g. public licence).
+
+BTS
+
+
+Has the meaning ascribed to it in Preamble, para. (C).
+
+Business Day
+
+
+Means Monday to Friday, except officially recognised Swiss national public holidays.
+
+Business Opportunity
+
+
+Has the meaning ascribed to it in §31.1.
+
+Change in the Infrastructure
+
+
+Has the meaning ascribed to it in Exhibit 5.
+
+Change of Control of TowerCo
+
+
+Means any change of circumstances related to and/or any change of the persons who, alone or jointly, directly or indirectly,
+
+
+(i) own shares in TowerCo that provide them with at least fifty percent (50%) of the voting stock plus 1 voting right or, in case TowerCo is listed, thirty three point three (33.3%) percent, if no other shareholder has a higher stake; or
+
+
+(ii) have the possibility to control at least fifty percent (50%) of the voting rights present in the shareholders’ meeting in TowerCo plus 1 voting right or in case TowerCo is listed, thirty three point three (33.3%) percent, if no other shareholder has a higher stake; or
+
+
+
+7
+
+
+(iii) are entitled to nominate, appoint or dismiss the majority of the members of the board of directors of TowerCo.
+
+
+It is agreed that a change of Control of Cellnex Telecom S.A. does not qualify as a direct or indirect Change of Control of TowerCo.
+
+Change Parties
+
+
+Has the meaning ascribed to it in § 25.1a).
+
+Closing Date
+
+
+Means the date on which the closing of the SPA takes place.
+
+Competitor of Sunrise
+
+
+Means a person operating in the fixed and mobile telecommunications markets in Switzerland, whether current or future, but always excluding [***].
+
+Control
+
+
+Means the ability of one person to determine that the affairs of another person are conducted in accordance with the intentions of the first by way of (i) the holding of shares, (ii) the possession of voting, appointment or instruction rights, or (iii) in any other way whatsoever, and “Controlled” and “Controlling” shall be construed accordingly.
+
+Database
+
+
+Has the meaning ascribed to it in § 27.
+
+Demerger
+
+
+Shall have the meaning set out in Preamble, para. (A).
+
+Effective Date
+
+
+Means the date of the signing of the original master services agreement, 24 May 2017.
+
+End of Existing Site Agreement
+
+
+Has the meaning ascribed to it in §3.9.
+
+Expert
+
+
+Has the meaning ascribed to it in § 17.16.
+
+Fair Market Value
+
+
+Has the meaning ascribed to it in § 17.16.
+
+First Option Right
+
+
+Has the meaning ascribed to it in § 17.3.
+
+First Prolongation Period
+
+
+Has the meaning ascribed to it in § 17.3.
+
+Force Majeure
+
+
+Has the meaning ascribed to it in § 9.7.
+
+FUSG
+
+
+Means the Federal Act on Merger, Demerger, Conversion and Transfer of Assets and Liabilities (Bundesgesetz über Fusion,
+
+
+
+8
+
+
+Spaltung, Umwandlung and Vermögensübertragung, SR 221.301).
+
+Golden Infrastructure
+
+
+Has the meaning ascribed to it in Exhibit 5.
+
+Higher Number
+
+
+Has the meaning ascribed to it in § 17.16.
+
+Initial Term
+
+
+Has the meaning ascribed to it in § 17.1.
+
+Inspection Period
+
+
+Has the meaning ascribed to it in § 5.2.
+
+Lower Number
+
+
+Has the meaning ascribed to it in § 17.6.
+
+MNO
+
+
+Means mobile network operator.
+
+Mobile Virtual Network Operator
+
+
+Means a wireless communications services provider that does not own the wireless network infrastructure.
+
+New Index Value
+
+
+Has the meaning ascribed to it in § 13.5.
+
+NIS
+
+
+Means non-ionising radiation.
+
+NIS Capacity
+
+
+Has the meaning ascribed to it in Exhibit 5.
+
+NISV
+
+
+Means federal ordinance on protection from non-ionising radiation (Verordnung über den Schutz vor nichtionisierender Strahlung, SR 814.710).
+
+Object Documentation
+
+
+Means the following documentation in respect of the Radio Tower Sites:
+
+
+–  planning documents, statics,
+
+
+–  building permit,
+
+
+–  inspection and maintenance reports,
+
+
+–  occupational safety documentation,
+
+
+–  electricity documentation (to the extent available),
+
+
+–  photo documentation.
+
+Old Index Value
+
+
+Has the meaning ascribed to it in § 13.5.
+
+Option Right
+
+
+Means the First Option Right and/or the Second Option Right.
+
+
+
+9
+
+Party
+
+
+Has the meaning ascribed to it on the first page of this Master Services Agreement.
+
+Prohibited Transferee
+
+
+Has the meaning ascribed to it in § 25.2.
+
+Radio Access Network Sharing or RAN Sharing
+
+
+Also known as active sharing, means the provision of a service by which two or more different mobile network operators, through the shared use of a single active equipment, are providing services to their users by means of different and independent logical networks by using their own or other operator’s frequencies and/or networks codes.
+
+Radio Tower Sites
+
+
+Means the sites which can be identified, where applicable, by referring to the columns “Site-ID”, “Coordinates (LON)”, “Coordinates (LAT)” “Postcode”, “City” as well as “Canton” set out, from time to time, in Exhibit 1.
+
+RAN-Sharing Radio Tower Sites
+
+
+Has the meaning ascribed to it in § 6.2.
+
+Remedy Period
+
+
+Has the meaning ascribed to it in § 5.2.
+
+Reserved Configuration
+
+
+Has the meaning ascribed to it in Exhibit 5.
+
+Respiration Rate
+
+
+Has the meaning ascribed to it in § 13.2c).
+
+Service Fee
+
+
+Has the meaning ascribed to it in § 13.1.
+
+Second Option Right
+
+
+Has the meaning ascribed to it in § 17.3.
+
+Second Prolongation Period
+
+
+Has the meaning ascribed to it in § 17.3.
+
+Services
+
+
+Has the meaning ascribed to it in Preamble, para. (F).
+
+Sharing Services
+
+
+Has the meaning ascribed to it in § 6.1.
+
+Site Agreement
+
+
+Means lease agreement (Mietvertrag), ground lease agreement (Baurechtsvertrag), public law rights (e.g. public licence agreement) or similar agreement under which TowerCo has leased or will lease land and/or part of a building from a third party for the purpose of providing the Services to Sunrise.
+
+Site Lessor
+
+
+Means a third party from whom TowerCo has leased or will lease land and/or part of a
+
+
+
+10
+
+
+building for the purpose of providing the Services to Sunrise, irrespective whether such leasing is structured as a lease (Mietvertrag), ground lease (Baurechtsvertrag), public law rights (e.g. public licence) or the like.
+
+SLA
+
+
+Has the meaning set out in Preamble para. (C).
+
+Sunrise Services
+
+
+Has the meaning ascribed to it in Preamble, para. (D).
+
+Telecommunications Act
+
+
+Means the Federal Telecommunications Act (Fernmeldegesetz, SR 784.10).
+
+Third Number
+
+
+Has the meaning ascribed to it in § 17.16.
+
+Transaction
+
+
+Has the meaning ascribed to it in § 25.1.
+
+Transfer Notice
+
+
+Has the meaning ascribed to it in § 25.1.
+
+TSA
+
+
+Has the meaning ascribed to it in Preamble, para. (C).
+
+§ 2
+
+Interpretation
+
+
+
+2.1
+Table of contents, headings. The table of contents and headings and sub-headings of this Master Services Agreement are for convenience only and shall not affect the construction of this Master Services Agreement.
+
+
+
+2.2
+Singular and plural. Unless the context otherwise requires, words denoting the singular shall include the plural and vice versa and references to any gender shall include all other genders.
+
+
+
+2.3
+Person. References to any person (which for the purposes of this Master Services Agreement shall include bodies corporate, unincorporated associations, partnerships, trusts, governments, governmental agencies and departments, statutory bodies or other entities, in each case whether or not having a separate legal personality) shall include the person’s successors.
+
+
+
+2.4
+Specific expressions. The words “other”, “include”, “including” and “in particular” do not connote limitation in any way.
+
+
+
+2.5
+References to recitals, schedules and clauses. References to recitals, schedules, clauses and sub-clauses are to (respectively) recitals to, schedules to, and clauses and sub-clauses of, this Master Services Agreement (unless otherwise specified) and references within a schedule to paragraphs are to paragraphs of that schedule (unless otherwise specified).
+
+
+
+11
+
+2.6
+References to statutory law. References in this Master Services Agreement to any statute, ordinance, statutory provision, regulation, directive or other legislation include a reference to that legislation as amended or replaced from time to time (whether before or after the date of this Master Services Agreement) and include any order, regulation, instrument or other subordinate legislation made under the relevant legislation.
+
+
+
+2.7
+References to legal term. References to any Swiss legal term for any action, remedy, method of judicial proceeding, legal document, legal status, court, organisation, body, official or any legal concept, state of affairs or thing shall in respect of any jurisdiction other than Switzerland be deemed to refer to and include that action, remedy, method of judicial proceeding, legal document, legal status, court, organisation, body, official, legal concept, state of affairs or thing which most nearly approximates in that jurisdiction to the Swiss legal term.
+
+
+
+2.8
+Decisive Language. Where a German term has been inserted after an English term in italics, the German term alone shall be authoritative for the purpose of interpreting such English term, without regard to any other interpretation of the English term.
+
+
+
+2.9
+Language. This Master Services Agreement is drafted in English for convenience purposes only, and the fact that the English language is used herein shall not be a reason to refer to laws, doctrine or case law of any English-speaking jurisdiction in the interpretation of this Master Services Agreement. Rather, this Master Services Agreement shall exclusively be interpreted by reference to Swiss laws, doctrine and case law.
+
+§ 3
+
+Services Provided by TowerCo under this Master Services Agreement
+
+A. Core Services
+
+
+
+3.1
+Core Services. TowerCo shall provide to Sunrise the following core services on the TowerCo Infrastructure Network, thus ensuring inter alia, a configuration is reserved for the Radio Equipment and Ancillary Equipment of Sunrise in accordance with the terms of this Master Services Agreement, in particular with § 3.3 below, so that Sunrise, in turn, can provide its mobile telecommunications services with the necessary coverage to its customers.
+
+
+
+3.2
+These core Services will include the following:
+
+
+
+ 	(i)
+Operation and Maintenance Services: TowerCo shall provide preventive maintenance, corrective maintenance, repair, renewal and other structural services as well as monitoring services of the TowerCo Infrastructure Network in accordance with § 8;
+
+
+
+ 	(ii)
+Configuration in the TowerCo Infrastructure Network: TowerCo shall, in accordance with § 3.3 below, provide Sunrise with configurations for the installation and operation of its Radio Equipment and Ancilliary Equipment in the TowerCo Infrastructure Network.
+
+
+
+12
+
+ 	(iii)
+Access Services: TowerCo shall provide access services in accordance with Exhibit 3.4
+
+TowerCo will do all acts that are reasonably required to provide the above core services in accordance with this Master Service Agreement [***].
+
+
+
+3.3
+Reserved and Additional Configuration in the TowerCo Infrastructure Network.
+
+
+
+ 	3.3a
+Reserved Configuration. During the term of this Master Services Agreement TowerCo must provide to Sunrise the Reserved Configuration as further described in Exhibit 1 and Exhibit 5. Sunrise may use this Reserved Configuration at any time during the term of this Master Services Agreement [***].
+
+[***].
+
+In addition, during the term of this Master Services Agreement, TowerCo must [***].
+
+
+
+ 	3.3b
+Additional Configuration. During the term of this Master Services Agreement TowerCo shall provide the Additional Configuration to Sunrise on the terms set out in this Master Services Agreement, in particular in § 13 and Exhibit 5 and Exhibit 6.2.
+
+B. Other Services
+
+
+
+3.4
+Support Services with respect to regulatory obligations of Sunrise. Sunrise is a telecommunications service provider in the sense of art. 4 Telecommunications Act and, as such, has to fulfil its respective regulatory obligations. Also, Sunrise is a license holder for the utilisation of the frequency spectrum for the provision of mobile telecommunications services in Switzerland and, as such, has to fulfil its obligations as set forth in the respective license. TowerCo shall support Sunrise in fulfilling these obligations, in particular, TowerCo shall provide all information to Sunrise which is necessary for Sunrise to fulfil its obligations as telecommunications service provider and license holder. [***].
+
+
+
+3.5
+Spatial planning, protection of nature and the countryside, joint-use of equipment. In the case of installations on the Passive Wireless Infrastructure outside building zones, art. 24 Spatial Planning Act (Raumplanungsgesetz, SR 700) and the relevant case law shall be taken into consideration by TowerCo. TowerCo shall make all [***] during the construction and operation of its Passive Wireless Infrastructure to enable the shared use of the respective sites for other location-based purposes outside the building zone. If TowerCo depends on a site outside the construction zone, it shall use [***].
+
+In respect of the Passive Wireless Infrastructure, TowerCo shall, to the extent required by the competent public authority, inform such authority of its planned and proposed new sites and any sites already approved, under construction or in service. In the case Passive Wireless Infrastructure is outside of the building zone, TowerCo shall, to the extent required, provide to the persons having a right to obtain such information, the information
+
+
+
+13
+
+necessary to assess the location constraints according to art. 24 of the Spatial Planning Act. TowerCo shall cooperate in developing coordination processes in order to minimize the impact on the area and landscape and to comply with the agreed processes. The site data for the assessment of joint uses shall be disclosed to the competent authority.
+
+
+
+3.6
+Improvement Services. TowerCo may [***] provide the improvement Services as specified in § 5.3.
+
+
+
+3.7
+Further Services. Further Services that TowerCo shall provide to Sunrise are set out in clause 2 of Exhibit 10.1 [***].
+
+
+
+3.8
+New Services. Sunrise and TowerCo may agree at any time for TowerCo to provide a service that is not included in the Services, and such new Services shall be put into practice in accordance with the terms and conditions established by the Parties for this purpose. [***].
+
+C. Other Service-related provisions
+
+
+
+3.9
+Impact of Site Agreements on Services. Should any provision existing at the Closing Date under any Site Agreement impose broader obligations on TowerCo towards the Site Lessor or limit TowerCo in its rights towards the Site Lessor to a greater extent than provided for in this Master Services Agreement, [***] shall prevail as between Sunrise and TowerCo, however only until the end of term (excluding options for prolongation of the term for TowerCo) [***]. After the respective [***] TowerCo shall use [***] to bring the provisions of the [***]. For the avoidance of doubt, TowerCo shall not enter into any new [***] that does not comply with its obligations towards Sunrise under this Master Services Agreement, unless the Parties otherwise agree. Also, TowerCo shall be entitled [***] to have all Site Agreements registered with the respective land register if and to the extent the Site Agreements foresee registration by the lessee. Sunrise may request from TowerCo to have one or more of these site agreements registered with the land register, provided that [***].
+
+
+
+3.10
+Adjustment of Radio Equipment. Sunrise shall be entitled to adjust its Radio Equipment in accordance with Exhibit 5.
+
+
+
+3.11
+No Interference. When making use of the Services being provided by TowerCo hereunder Sunrise shall not engage in any conduct or activity that interferes with other users’ use or operation of their equipment if such equipment existed or was utilised prior to Sunrise’s use or operation of its Radio Equipment and Ancillary Equipment. This shall also apply in case of changes of existing Radio Equipment or Ancillary Equipment of Sunrise, in which case Sunrise shall ensure that the changed Radio Equipment and Ancillary Equipment does not interfere with the use or operation of other users’ equipment existing at the site before such change. If any radio frequency interference is caused by the Radio Equipment or Ancillary Equipment of Sunrise, Sunrise shall use [***] to correct and eliminate any such interference using state-of-the-art technology [***] after receipt of notification from TowerCo, but in no event later than [***], and to perform an interference study in accordance with then current industry-standard procedures. If the interference
+
+
+
+14
+
+
+cannot be corrected or eliminated within the period set out above, Sunrise shall cause any Radio Equipment or Ancillary Equipment that interferes with the use or operation of any other third party sharing the relevant Radio Tower Sites’ operations to be immediately powered down to the extent necessary to eliminate such interference or, as ultima ratio, turned off if powering down does not suffice to resolve the interference, [***] but no later than [***].
+
+If the interference is caused by the use or operation of a third party or the equipment of a third party sharing the relevant Radio Tower Sites, then TowerCo will cause the third party to cease such use or operation or take the necessary measures with regard to its equipment, subject to the following two sentences. With regards to co-use agreements with the third party being in force at the Closing Date, this obligation of TowerCo will apply only [***]. With regards to future co-use agreements with third parties, TowerCo will use [***] to negotiate the incorporation of terms to request such termination of interference.
+
+
+
+3.12
+Information on Changes by Sunrise. Further, when making use of the Services being provided by TowerCo hereunder, Sunrise shall inform TowerCo [***] of frequency changes, transmission power changes, the re-orientation of antennas, and/or changes to the power supply systems [***].
+
+
+
+3.13
+Information on Changes by TowerCo. TowerCo, when providing the Services, will inform Sunrise [***] about any changes intended by TowerCo or other network operators or users of the TowerCo Infrastructure Network which may have an impact on the Services used by Sunrise.
+
+
+
+3.14
+Standard of Care. TowerCo has to apply throughout the Master Services Agreement a standard of care that can be reasonably expected from a reputable tower company and which enables Sunrise to operate a stable, high-quality, state-of-the-art integrated national mobile network. Explicit provisions under this Master Services Agreement stipulating a stricter or a specific standard of care remain unaffected.
+
+
+
+3.15
+Protection of Sunrise. TowerCo shall not take any action or implement any decision in relation to the provision of the Services (including all activities of TowerCo in terms of optimisation and deployment of the TowerCo Infrastructure Network) which may have an adverse effect on Sunrise and/or Sunrise Services or which adversely affects the function or performance of, or decreases the resource efficiency of the Services, including implementing changes in technology, equipment and software configuration, without first obtaining Sunrise’s approval, which approval Sunrise may withhold in respect of changes which may have an adverse effect on Sunrise and/or Sunrises Services or the Services in its sole discretion.
+
+
+
+3.16
+[***].
+
+
+
+3.17
+Consent of TowerCo. Only changes (including replacements, additions, reductions) of the Radio Equipment and/or Ancilliary Equipment which go beyond the Reserved Configuration, shall (i) be subject to the prior written consent of TowerCo, which TowerCo may withhold only on material grounds being only availability, stability and general safety
+
+
+
+15
+
+
+of the TowerCo Infrastructure Network, the lack of the Site Lessor’s consent and/or public permits which need to be obtained under the Site Agreement for the change in question (unless clearly and explicitly and beyond any doubt provided for otherwise in Exhibit 5) and (ii) entail an adjustment of the Service Fee in accordance with Exhibit 5 and Exhibit 6.2, if any.
+
+§ 4
+
+Service Levels and Key Performance Indicators
+
+TowerCo shall at all times achieve the service levels and key performance indicators in respect of the Services as set out in Exhibit 9.2.
+
+§ 5
+
+The Passive Wireless Infrastructure
+
+
+
+5.1
+Inventory. TowerCo shall [***] and within [***] of the Closing Date be entitled to perform or engage a third party to perform an inventory of the Passive Wireless Infrastructure of TowerCo as well as the Radio Equipment and Ancillary Equipment of Sunrise and the equipment of other operators as at the Effective Date. For this purpose, TowerCo (and, as the case may be, the third party) is, in particular, entitled to inspect all Radio Equipment and Ancillary Equipment of Sunrise [***]. Sunrise shall reasonably assist TowerCo with regard to such inventory and shall in particular provide access to necessary documentation at no cost to TowerCo. Sunrise is entitled, but not obliged, to accompany TowerCo or the third party, as the case may be, in the course of the preparation of the inventory and to assess and verify samples of the inventory list at its own expense. TowerCo or the third party, as the case may be, shall report to Sunrise any issues that arise in the course of the preparation of the inventory list and TowerCo and Sunrise shall in good faith settle any such issues. To the extent completed and approved by Sunrise (such approval not to be unreasonably withheld and to be provided without undue delay), the inventory shall serve as conclusive evidence for the Parties of the Passive Wireless Infrastructure of TowerCo as well as the Radio Equipment and Ancillary Equipment of Sunrise and the equipment of other operators. The Parties shall update Exhibit 1 and, as the case may be, this Master Services Agreement, accordingly.
+
+
+
+5.2
+Correction of initial Scope of Master Services Agreement. In the event that Exhibit 1 as at the Effective Date does not, according to a Party, properly set out the Radio Equipment and Ancillary Equipment of Sunrise and the equipment of other operators and the Passive Wireless Infrastructure of TowerCo, the Parties shall agree in good faith any changes required to [***], if any, and supplement the Master Service Agreement accordingly. [***].
+
+
+
+5.3
+Inspection Period and Remedy Period. If during a period of [***] from the Closing Date (the “Inspection Period”) TowerCo detects that parts of the Passive Wireless Infrastructure are defective, i.e. in a condition that prevents TowerCo from providing the Services as agreed hereunder, in particular, to meet the agreed service levels and key performance indicators (the “Defect”), TowerCo shall notify the relevant Defect to Sunrise [***]. TowerCo shall remedy such Defect (this remedial work being the “Improvement
+
+
+
+16
+
+
+Services” as referred to in § 3.6 above) within [***] from detecting the relevant Defect, in any event, not later than [***] from the Closing Date, (the “Remedy Period”). To the extent the Defects notified existed as of the Closing Date, Sunrise will [***]. Prior to incurring [***], the Parties will mutually discuss and agree in good faith and [***], whether a Defect exists. [***].
+
+To the extent there is a Defect, TowerCo shall be released from meeting such service levels, key performance indicators and other relevant obligations under this Master Service Agreement. It is understood that TowerCo shall continue to meet the service levels, key performance indicators and other relevant obligations under this Master Service Agreement (i) with respect to the Passive Wireless Infrastructure for which no such Defect exists in full and (ii) with respect to the Passive Wireless Infrastructure for which such Defect exists to extent reasonably possible.
+
+
+
+5.4
+Technical requirements and specifications. TowerCo ensures that the TowerCo Infrastructure Network meets such technical requirements and specifications as an MNO may reasonably expect for the installation and operation of the Radio Equipment and Ancilliary Equipment of Sunrise in the TowerCo Infrastructure Network.
+
+
+
+5.5
+Construction Work. All construction work on the Passive Wireless Infrastructure shall be carried out by TowerCo. All construction work by TowerCo which may impact Sunrise’s Radio Equipment and Ancillary Equipment is to be carried-out on the Passive Wireless Infrastructure in close co-operation with Sunrise, and in compliance with a construction plan mutually agreed by, the Parties.
+
+If TowerCo requires said construction work, [***]. If Sunrise requests said construction work, [***].
+
+TowerCo shall cooperate with such endeavors of Sunrise, [***]. If Sunrise’s requested construction work leads to an increase of NIS Capacity, Exhibit 5 and Exhibit 6.2 shall apply.
+
+§ 6
+
+Sharing Services on the TowerCo Infrastructure Network
+
+
+
+6.1
+Sharing services. TowerCo is free to provide services, in particular, sharing services, to other users on the TowerCo Infrastructure Network and to allow other users, including other network operators, to receive services, e.g. sharing services on the TowerCo Infrastructure Network, [***] (the “Sharing Services”).
+
+During the entire term of this Master Services Agreement, in the event that TowerCo receives an expression of interest from other users, including other network operators, to receive services from TowerCo, then TowerCo may provide such services, however if such provision of services affects [***] only with Sunrise’s prior written consent [***].
+
+
+
+6.2
+Radio Access Network Sharing. The [***] Radio Tower Sites which are subject to RAN-Sharing as at the Effective Date are identified in Exhibit 1 in the column “RAN Sharing” (specifying also the relevant operators), which can be extended as follows. Within [***]
+
+
+
+17
+
+
+from the Closing Date, Sunrise may implement RAN-Sharing on further Radio Tower Sites up to the maximum number of [***] Radio Tower Sites (“RAN-Sharing Radio Tower Sites”) without a need for consent, but shall notify TowerCo accordingly and Exhibit 1 shall be updated to reflect the additional RAN Sharing Radio Tower Sites. Thereafter, Sunrise shall have the right to replace [***] of the RAN Sharing Radio Tower Sites without need for consent, [***] (the first [***] begins at expiry of the [***]period referred to above), in which case TowerCo shall be notified and Exhibit 1 shall be updated to reflect the replaced RAN Sharing Radio Tower Sites. For clarity, Sunrise only requires consent of TowerCo for RAN Sharing Radio Tower Sites exceeding [***]. The Parties agree that Sunrise will refrain from implementing Radio Access Network Sharing on the Radio Tower Sites not subject to the Maximum Required Transmission Power and any newly deployed Radio Tower Site as referred to in § 20 of this Master Services Agreement. In case of an increase or decrease of the RAN-Sharing Radio Tower Sites above the basket of [***] RAN-Sharing Radio Tower Sites the Service Fee shall be adjusted as set out in Exhibit 6.2, clause 3. The Service Fee adjustments (increase or decrease) shall become effective as of the date set out in § 13.3 of this Master Services Agreement and clause 3 of Exhibit 6.2.
+
+
+
+6.3
+Mandatory Sharing. Sunrise shall inform TowerCo in writing without undue delay if another operator makes a request to Sunrise in accordance with Article 36 of the Federal Telecommunications Act.
+
+
+
+ 	6.3.a
+To the extent allowed by such operator, TowerCo shall negotiate and agree all terms and conditions of the sharing with such operator directly.
+
+
+
+ 	6.3.b
+To the extent not allowed by such operator, Sunrise shall negotiate and agree all terms and conditions of the sharing with such operator on behalf of TowerCo, but on instructions of TowerCo, and enter into a written agreement with such operator on the agreed terms and conditions. The instruction of TowerCo shall be based on standard market terms and conditions giving due regard to TowerCo’s past practice and respect statutory limitations and obligations. TowerCo shall [***].
+
+
+
+ 	6.3.c
+TowerCo will use [***] to ensure that the obligation to comply with public safety requirements shall be imposed on the operator.
+
+
+
+ 	6.3.d
+Sunrise shall forward any fees received by Sunrise from such operator under such written agreement to TowerCo [***].
+
+
+
+ 	6.3.e
+TowerCo shall fulfil the obligations of Sunrise under such written agreement on behalf of Sunrise towards such operator directly, subject to receipt of the payment under (d) by TowerCo, with discharging effect for Sunrise.
+
+TowerCo and Sunrise shall cooperate in good faith to fulfil the obligations under this clause. In the event that the sharing under § 6.3 of this Master Services Agreement requires the consent of a third party (e.g. the Site Lessor), TowerCo shall use its [***] to procure such consent. TowerCo does not warrant that the third party will grant any consent. For the avoidance of doubt, § 3.4 of this Master Services Agreement applies. [***].
+
+
+
+18
+
+Any sharing of the Passive Wireless Infrastructure, other than provided for in § 6.3 of this Master Services Agreement is subject to TowerCo’s prior consent [***].
+
+§ 7
+
+Changes in the Infrastructure
+
+
+
+7.1
+The procedure for Changes in the Infrastructure and the implementation for such changes is set out in Exhibit 5.
+
+
+
+7.2
+Plans. Upon request, TowerCo shall provide in customary electronic format to Sunrise the as-built plan and/or final plan regarding a particular Radio Tower Site including the current allocation, any statics of the respective antenna support and the NIS Capacity [***].
+
+
+
+7.3
+Contemplated Co-Use by Third Party. Upon the receipt of the request according to § 7.2 of this Master Services Agreement by Sunrise, TowerCo shall also inform Sunrise [***] if the requested Radio Tower Site is being processed for co-use for a third party. In such case TowerCo shall provide the as-built plan and/or final plan and, as the case may be, any antenna support statics available to TowerCo, specifying the respective processing status. TowerCo will use [***] to coordinate the discussions with the interested parties. Upon reasonable request (e.g. urgency) Sunrise can take part in such discussions.
+
+
+
+7.4
+Description of Change by Sunrise. If Sunrise provides TowerCo with a description of the proposed Change in the Infrastructure, TowerCo shall provide Sunrise [***] with a first (non-binding) indication of whether the proposed change or amendment is in its view possible or not, such indication to comprise a view regarding the necessity of Site Lessor’s consent to the proposed change under the respective Site Agreement.
+
+
+
+7.5
+Review by TowerCo. TowerCo shall review the description of the proposed Change in the Infrastructure [***]. TowerCo shall either grant its consent to the proposed Change in the Infrastructure or refuse its consent within [***] after receipt of the description according to § 7.4. TowerCo shall use [***] to obtain any Site Lessor’s consent if necessary under the relevant Site Agreement. If TowerCo refuses its consent, TowerCo — if reasonably possible — shall provide Sunrise with an alternative planning proposal within the abovementioned time period. Such changes shall be reviewed by Sunrise within [***] of receipt of the alternative planning proposal of TowerCo, i.e. Sunrise will inform TowerCo if it accepts the alternative planning proposal of TowerCo or not. If Sunrise refuses the alternative planning proposal and TowerCo withholds its consent, Sunrise is not entitled to carry out the requested Change in the Infrastructure. If TowerCo does not grant or refuse its consent within the above mentioned time period, consent to the requested Change in the Infrastructure is deemed given by TowerCo.
+
+In the cases in which TowerCo’s consent is not required Sunrise shall inform TowerCo about the Change in the Infrastructure.
+
+
+
+7.6
+Engineering Survey and Costs of Survey. If consent to the Change in the Infrastructure is given (or deemed to be given) by TowerCo or Sunrise, as the case maybe, then TowerCo shall carry out the structural examination and/or the wind load comparison of the intended changes or send the plans to the respective tower manufacturer or to a firm of structural
+
+
+
+19
+
+
+engineers to be appointed by TowerCo. [***]. The newly computed structural information and/or the result of the wind load comparison shall be supplied to Sunrise in connection with the utilization request.
+
+
+
+7.7
+Permits. If necessary or practical, TowerCo shall apply to the competent authority for any building permit or other permits and approvals required for the operation of Radio Equipment and Ancillary Equipment. TowerCo shall also take any other ancillary measures that are necessary to obtain such permits and approvals, e.g. ask the Site Lessor to sign documents, if necessary, taking into account the reasonable interests of Sunrise with regard to the obtaining of the necessary permits and approvals in legal proceedings. Upon request of Sunrise, TowerCo shall grant to Sunrise and/or a third party designated by Sunrise a power of attorney enabling to apply to the competent authority for any necessary building permit or other permits and approvals required. Sunrise is entitled to enforce the granting of such regulatory permits and approvals on behalf of TowerCo in legal proceedings; TowerCo shall grant a respective power of attorney if necessary for the above mentioned purpose. The Parties shall keep each other informed about all aspects of such permit and approval procedures and legal proceedings. The Parties shall reasonably co-operate with each other and shall consider any recommendations made by the other Party for the handling of such procedures. [***].
+
+
+
+7.8
+[***].
+
+
+
+7.9
+Information on Timing. Sunrise will inform TowerCo of the intended date and time of the planned implementation of the Change in the Infrastructure.
+
+
+
+7.10
+Supplement to Master Services Agreement. The Parties shall for documentary purposes amend this Master Services Agreement including, if applicable, its exhibits, [***] after the consent of TowerCo has been granted under § 7.5 of this Master Services Agreement and the presentation of all necessary documentation.
+
+
+
+7.11
+Costs and Expenses relating to Radio Equipment. [***]. Any additions, modifications, upgrades or replacements (for the avoidance of doubt not including Sunrise’s Radio Equipment) to the Passive Wireless Infrastructure shall become the property of TowerCo.
+
+§ 8
+
+Maintenance, Repair, Renewal and other structural measures
+
+relating to TowerCo’s Infrastructure Network, Shut-down
+
+
+
+8.1
+Maintenance and Repair. TowerCo is obliged to maintain, repair and renew the Passive Wireless Infrastructure and the access to the Radio Equipment and Ancillary Equipment to enable Sunrise to use the Passive Wireless Infrastructure as agreed under this Master Services Agreement. In any event, as far as TowerCo renews or substantially changes its Passive Wireless Infrastructure, TowerCo has to ensure that such renewal or change results in a vendor and technology neutral Passive Wireless Infrastructure to the same extent as provided prior to such renewal or substantial change. The same applies if TowerCo provides Sunrise with new and/or additional Passive Wireless Infrastructure.
+
+
+
+20
+
+8.2
+Service Manuals and Policies. The Parties agree that the uninterrupted provision of the Services is essential for Sunrise Services and Sunrise Objectives. Therefore, and to this extent, TowerCo shall [***] implement, apply and update service manuals and relevant policies in accordance with best practice.
+
+
+
+8.3
+Measures to be tolerated by Sunrise. Sunrise shall tolerate measures of TowerCo with respect to its Passive Wireless Infrastructure, the Services or measures by other users and/or the Site Lessor in the following circumstances [***] even where such measures result in temporary Service reductions or shut-downs of the Radio Equipment or Ancillary Equipment:
+
+
+
+ 	8.3.a
+[***]
+
+
+
+ 	8.3.b
+[***]
+
+
+
+ 	8.3.c
+[***]
+
+
+
+ 	8.3.d
+[***]
+
+
+
+ 	8.3.e
+[***]
+
+TowerCo undertakes to use [***]. It is understood that TowerCo shall continue to meet [***] under this Master Service Agreement (i) with respect to such parts of the Passive Wireless Infrastructure which are not affected by such measures in full and (ii) with respect to such parts of the Passive Wireless Infrastructure which are affected by such measures [***].
+
+
+
+8.4
+Measures to be compensated. Measures carried out by a Party which are outside the scope of § 8.3a) through § 8.3e) of this Master Services Agreement and which result in Service reductions or the shut-down of Sunrise’s Radio Equipment shall be permitted only if such measures are taken for [***] reasons of TowerCo [***] or the respective other user at the TowerCo Infrastructure Network for which no workaround can be found. [***].
+
+
+
+8.5
+Shut-down not caused by Sunrise. Subject to § 8.3 and § 8.4 above, if work or any other action or omission of TowerCo or another user which is not caused by Sunrise requires that the Radio Equipment of Sunrise is shut down or that Services be reduced [***]. Sunrise has the right to demand a reasonable interim solution and TowerCo shall [***]. TowerCo shall [***]. Further claims and rights of Sunrise under this Master Services Agreement remain unaffected.
+
+
+
+8.6
+Shut-down caused by Sunrise. Where the shut-down of third party equipment or service reduction for third parties on the Passive Wireless Infrastructure of [***] is caused by a measure taken by Sunrise, Sunrise shall [***]. [***]. If and to the extent possible Sunrise shall notify TowerCo any intended shut-down in advance [***].
+
+
+
+8.7
+Coordination by TowerCo. Measures of Sunrise or a third party user that may impair or disrupt the operations of a third party user or Sunrise shall be coordinated by TowerCo. The Parties shall keep each other informed about such measures at the earliest possible
+
+
+
+21
+
+
+time and cooperate in the best possible manner to minimize disruption caused by such measures.
+
+
+
+8.8
+Limitation of Measures. All measures under § 8.1 through § 8.7 of this Master Services Agreement shall be limited to the [***] in terms of [***]. In particular, measures shall be taken only during [***] due to imperative operational reasons.
+
+
+
+8.9
+Network Freeze. Sunrise shall inform TowerCo in advance about those periods during which changes to the Passive Wireless Infrastructure affecting Sunrise Services are not allowed, except for urgency interventions (Network Freeze), such periods usually being [***]. The Parties acknowledge that during such Network Freeze periods any Change in the Infrastructure must be agreed by the Parties as far as the Sunrise Services are affected.
+
+§ 9
+
+Liability and Indemnification
+
+
+
+9.1
+Exclusion of Liability for Sunrise. Unless otherwise provided in this Master Services Agreement, Sunrise shall be liable to TowerCo for [***].
+
+Except in case of [***], Sunrise shall not be liable for [***].
+
+The aggregate liability of Sunrise for any and all kind of damages under or in connection with this Master Services Agreement shall be capped at [***].
+
+
+
+9.2
+Exclusion of Liability for TowerCo. Unless provided otherwise in this Master Services Agreement, TowerCo shall be liable to Sunrise for [***], unless [***].
+
+Except in case of [***] TowerCo shall not be liable for [***].
+
+The aggregate liability of TowerCo for any and all kind of damages under or in connection with this Master Services Agreement shall be capped at [***].
+
+
+
+9.3
+Indemnification. TowerCo shall indemnify Sunrise [***]. Similarly, Sunrise shall indemnify TowerCo [***]. It is understood, that the limitations set out in § 9.1 and 9.2 shall not apply to this § 9.3, and that the cap for any and all claims under this indemnification provision shall be CHF [***] in the aggregate for Sunrise and shall be CHF [***] in the aggregate for TowerCo.
+
+
+
+9.4
+[***].
+
+
+
+9.5
+Grace Period. Until the expiry of the Remedy Period, Sunrise is not entitled to raise a claim against TowerCo under this Master Services Agreement, if and to the extent that the claim is based on [***].
+
+
+
+9.6
+Breach of obligation by Sunrise under TSA, SLA or BTS. If Sunrise breaches its obligations under the TSA, or SLA, or BTS, TowerCo shall [***].
+
+
+
+22
+
+9.7
+Force Majeure. Each Party shall be relieved of its obligation to perform to the extent that fulfilment is delayed or prevented by events beyond a Party’s reasonable control, including natural disasters such as fire, flood, earthquake, wars, terrorist attacks, civil unrest, strike and similar events (“Force Majeure”). If one Party is unable to perform its obligations under this Master Services Agreement due to Force Majeure, in whole or in part, such Party must immediately notify this Force Majeure with a sufficient description to the other Party. In addition the affected Party must take all reasonable (zumutbar) efforts to continue to perform its obligations as quickly as possible and to limit the effects caused by Force Majeure. The other Party is obligated to cooperate and assist to a reasonable extent.
+
+§ 10
+
+Insurance
+
+
+
+10.1
+Insurance of TowerCo. TowerCo shall obtain and maintain the following insurance policies, with in each case an amount insured of not less than CHF [***] per claim and not less than CHF [***] in the annual aggregate, from a reputable insurance company authorized to do business in Switzerland throughout the term of this Master Services Agreement:
+
+10.1.a [***]
+
+10.1.b [***]
+
+for all damages, business interruption and liabilities arising out of or in connection with the provision and maintenance of the TowerCo Infrastructure Network under this Master Services Agreement and shall provide evidence of insurance cover and scope as well as of the continuous payment of the corresponding premiums upon written request by Sunrise.
+
+
+
+10.2
+Insurance of Sunrise. The Sunrise shall obtain and maintain the following insurance policies, with in each case an amount insured of not less than CHF [***] per claim and not less than CHF [***] in the annual aggregate, from a reputable insurance company authorized to do business in Switzerland throughout the term of this Master Services Agreement:
+
+10.2.a [***]
+
+10.2.b [***]
+
+for all damages, business interruption and liabilities arising out of or in connection with the (de)installation and operation of the Radio Equipment and Ancillary Equipment on the TowerCo Infrastructure Network under this Master Services Agreement and shall provide evidence of insurance cover and scope as well as of the continuous payment of the corresponding premiums upon written request by TowerCo.
+
+
+
+23
+
+§ 11
+
+Ensuring Public Safety
+
+
+
+11.1
+Public Safety for Radio Equipment. When using the Services provided by TowerCo Sunrise shall always ensure public safety of its Radio Equipment, and any other systems installed by or on behalf of Sunrise. If Sunrise fails to ensure public safety despite a written demand from TowerCo within a reasonable period of time (at least [***]), or in the event of imminent danger, TowerCo may take, or cause to be taken, the necessary remedial measures at the expense of Sunrise. Sunrise shall permit TowerCo and its representatives upon reasonable notice to inspect on its own responsibility all of Sunrise’s equipment located on the Radio Tower Site in accordance with industry standard practices to ascertain compliance with the provisions of this Master Services Agreement.
+
+
+
+11.2
+Public Safety for TowerCo Infrastructure Network. Apart from this, ensuring general public safety on the TowerCo Infrastructure Network shall be the responsibility of TowerCo. This includes but is not limited to obligations to ensure public safety which relate to the real property, the TowerCo Infrastructure Network and here in particular the access routes (e.g. steep track, resting place, passage openings and stages) as well as danger arising from ice.
+
+§ 12
+
+Permits and other Legal Requirements
+
+
+
+12.1
+Permits for Radio Equipment. Sunrise shall obtain for its Radio Equipment the necessary authorisations or permits, in particular according to the NISV. Sunrise shall provide TowerCo with copies of any authorisation or permit issued following the conclusion of this Master Services Agreement upon request.
+
+
+
+12.2
+Compliance by Sunrise. Sunrise shall install and operate its Radio Equipment in accordance with the relevant statutory requirements.
+
+
+
+12.3
+Compliance by TowerCo. TowerCo shall be responsible for ensuring the compliance with all legal provisions regarding the Passive Wireless Infrastructure in all other respects. If TowerCo becomes subject to regulatory requirements, such as orders to tolerate demolition, removal or to comply with conditions, and if such requirements may relate to or adversely affect the Services, the process set out in § 7.7 of this Master Services Agreement shall apply accordingly. The process as set out in § 7.7of this Master Services Agreement shall also apply if a third party appeals against a permit or approval and TowerCo joins as a party or participant in its capacity as the owner.
+
+
+
+12.4
+Cooperation. The Parties shall support each other in obtaining and maintaining in effect any permits, in particular any building permit, and other authorisations and approvals necessary to build and maintain any Radio Tower Site or operate and install any Radio Equipment.
+
+
+
+24
+
+§ 13
+
+Service Fee
+
+
+
+13.1
+Service Fee. For the Services provided hereunder Sunrise agrees to pay to TowerCo an annual service fee in the total amount of
+
+[***]
+
+(“Service Fee”).
+
+[***]. The Service Fee is exclusive of any applicable VAT. Sunrise shall, subject to having received a valid and accurate invoice, pay any VAT due at the rate and in the manner prescribed under applicable law. Should it turn out that summarising of different supplies under one lump sum fee is not in line with the applicable VAT law, Sunrise shall pay any VAT due on the different supplies at the applicable VAT rate to TowerCo after having received a valid and accurate VAT invoice.
+
+
+
+13.2
+Adjustment due to a termination or removal of Radio Tower Sites. In case Sunrise partially terminates this Master Services Agreement and in case of partial removal of a Radio Tower Site from the scope of this Master Services Agreement the following shall apply to the Service Fee:
+
+
+
+ 	13.2.a
+The Service Fee shall decrease by [***], adjusted by [***]. However, there will be no decrease pursuant to the preceding sentence of the Service Fee within [***] from the Closing Date [***]. The relevant decrease of the Service Fee shall become applicable as from the quarter following the reduction of the relevant Radio Tower Site. As from that date TowerCo will have no further obligation vis-à-vis Sunrise in respect of the relevant Radio Tower Site.
+
+
+
+ 	13.2.b
+The Service Fee shall not decrease in any case of [***].
+
+
+
+ 	13.2.c
+For the purposes of this clause the “Respiration Rate” means [***].
+
+
+
+13.3
+Other adjustments. Furthermore, the Service Fee under § 13.1 of this Master Services Agreement shall be adjusted as follows: in the event [***].
+
+
+
+13.4
+Adjustment upon request. Any adjustment of the Service Fee as defined above in § 13.2 and § 13.3 shall be agreed upon request of a Party. Each adjustment of the Service Fee shall become effective the calendar quarter following the receipt of the adjustment request made in accordance with this Master Services Agreement. For the avoidance of doubt, the Service Fee adjustment shall not become effective retroactively, i.e. before the calendar quarter following the receipt of the adjustment request. The Parties shall, without undue delay after the adjustment of the Service Fee, for documentary purposes [***].
+
+
+
+13.5
+Service Fee Adjustment due to Change of CPI. The Service Fee under § 13.1 of this Master Services Agreement or as adjusted under § 13.2 and § 13.3 of this Master Services Agreement shall be adjusted annually as of [***], in accordance with the changes in the National Consumer Price Index (CPI) of the Federal Statistical Office. [***]
+
+
+
+25
+
+[***]
+
+§ 14
+
+[***]
+
+[***]
+
+§ 15
+
+Operating and other Ancillary Costs and Power Consumption Costs
+
+
+
+15.1
+Operating, Ancillary Costs. TowerCo shall bear [***], and Sunrise shall bear [***]. § 15.2 of this Master Services Agreement remains unaffected.
+
+
+
+15.2
+Power Supply to Sunrise. Sunrise is responsible for the power supply (and relevant costs) of its Radio Equipment. Regarding power consumption, Sunrise has generally its own utility connection with the respective utility company and has entered into a contract with the utility company and settles its power consumption bills with such company for Radio Tower Sites. In exceptional cases, Sunrise may have installed, [***], an intermediate meter for the electricity connection of TowerCo. Where an intermediate meter has been installed, the power consumption costs will be [***]. In this case, Sunrise shall [***]. Settlement of advance payments and actual consumption costs is carried out by [***]. The payment shall be due for payment [***] following receipt of the settlement. If this results in additional payment or reimbursement claims, the amount of the advance payments will be adjusted by TowerCo accordingly.
+
+
+
+15.3
+Power Supply to TowerCo. Sunrise shall allow TowerCo to use Sunrise’s power supply connection for the operation of its Passive Wireless Infrastructure in the scope as operated upon conclusion of this Master Services Agreement. TowerCo shall [***]. Upon agreement with Sunrise, TowerCo may make the power supply available to third party operators [***]. TowerCo shall have the right to install its own meters in order to identify its individual power consumption. If TowerCo does not install meters, the respective expenses may [***]. The Parties will mutually amend [***] appropriately in case [***]. TowerCo may use Sunrise’s existing power supply only to the extent Sunrise’s operation of its Radio Equipment and Ancillary Equipment on the respective Radio Tower Site is not impaired. This § 15.3 shall not constitute an obligation of Sunrise to establish a new connection to the electricity grid or retain a connection to the electricity grid in cases of decommissioning of Radio Equipment on one or more of the TowerCo Infrastructure Network, i.e. in case of decommissioning of Radio Equipment Sunrise shall be free to terminate any power supply contracts at its sole discretion informing TowerCo [***], and collaborating, if so requested by TowerCo, to handover the supply to TowerCo. Furthermore, Sunrise shall [***]. Where Sunrise has previously agreed to provide power supply to a third party sharing the Passive Wireless Infrastructure, Sunrise undertakes to continue providing power to TowerCo until the earlier of the expiration of Sunrise’s rights with respect to such Passive Wireless Infrastructure under this Master Services Agreement and the other third party rights.
+
+
+
+26
+
+§ 16
+
+Due Date for Payment; Method of Payment
+
+
+
+16.1
+Due Date. The Service Fee and any advance payments for power consumption costs under § 15.2 of this Master Services Agreement shall be due for payment by Sunrise [***] in [***] instalments in advance by [***] of each year, beginning from [***]. All other payments are due within [***] from receipt of the relevant invoice.
+
+
+
+16.2
+Bank Accounts. The payments shall be made into the bank account of TowerCo as notified in writing to Sunrise.
+
+TowerCo may by [***] written notice to Sunrise change its bank account.
+
+Sunrise will specify its respective bank account information if required.
+
+
+
+16.3
+Default Interest. If one Party defaults on payment, the other Party may charge late-payment interest at the rate of [***]% p.a. for amounts that are overdue for more than [***] after a written reminder was sent by the respective Party. For the avoidance of doubt there will be [***].
+
+
+
+16.4
+Limited set-off. Except for an amount up to CHF [***] per quarterly invoice as per § 16.1, not exceeding CHF [***] per year, that may be subject to set-off, all payments pursuant to this Master Services Agreement shall be [***].
+
+§ 17
+
+Term and Termination of this Master Services Agreement
+
+
+
+17.1
+Initial Term. This Master Services Agreement is entered into for an initial term of twenty (20) years as from the Closing Date (hereinafter the “Initial Term”). The right of the Parties of ordinary termination of this Master Services Agreement shall be excluded for the Initial Term.
+
+
+
+17.2
+Term for additional Radio Tower Sites. The Initial Term with regard to an additional Radio Tower Site which is deployed pursuant to the BTS which is added to Exhibit 1 after the Effective Date shall be as follows: the Initial Term shall commence on the date on which TowerCo finally accepts such additional Radio Tower Site under the BTS (i.e. Site Accepted according to BTS). After the Initial Term, provided that Sunrise has exercised the First Option Right under § 17.3, Sunrise has the right to align the term of the additional Radio Tower Site with the First Prolongation Period and subsequently the Second Prolongation Period, as the case may be. Save as specifically provided in this § 17.2, all other terms of this Master Services Agreement shall apply to the additional Radio Tower Sites deployed pursuant BTS.
+
+
+
+17.3
+Prolongation Period and Option Rights. Sunrise shall have the right to demand a prolongation of this Master Services Agreement in its entirety (the “First Option Right” respectively the “Second Option Right”) on the same then current terms and conditions for two (2) additional terms of ten (10) years each (the “First Prolongation Period” respectively the “Second Prolongation Period”). The First Option Right may be
+
+
+
+27
+
+
+exercised by a written declaration which is received by TowerCo at the latest [***] prior to the expiry of the Initial Term. If Sunrise has exercised the First Option Right, it shall be entitled to exercise the Second Option Right. The Second Option Right may also be exercised by a written declaration which is received by TowerCo at the latest [***] prior to the expiry of the prolonged term pursuant to the First Option Right. Should TowerCo have terminated the Master Services Agreement in accordance with § 17.4 before Sunrise has exercised its First Option Right or, respectively, Second Option Right, such termination of TowerCo shall become null and void if Sunrise exercises its First Option Right or, respectively, Second Option Right.
+
+
+
+17.4
+Indefinite Extension. After the Initial Term (if the First Option Right is not exercised) or after the First Prolongation Period (if the Second Option Right is not exercised) or after the Second Prolongation Period, as the case may be, this Master Services Agreement will be extended indefinitely on the same terms and conditions, unless it is terminated by Sunrise with a notice period of twenty-four (24) months or by TowerCo with a notice period of five (5) years prior to the end of the Initial Term or the First Prolongation Period or the Second Prolongation Period, as the case may be. The Master Services Agreement extended indefinitely may be terminated by each Sunrise and TowerCo with a notice period of five (5) years as of the end of the calendar year.
+
+
+
+17.5
+Minimum Term for Individual Sites. In case of a termination by Sunrise in accordance with § 17.4 of this Master Services Agreement, this termination shall not become effective for, and this Master Services Agreement shall continue to apply only in respect of, [***]. All other termination rights for Sunrise under this Master Services Agreement remain unaffected.
+
+Sunrise shall only [***]. § 16 of this Master Services Agreement shall apply accordingly.
+
+
+
+17.6
+Good faith negotiation for prolongation. As soon as TowerCo issued a termination notice in accordance with § 17.4 of this Master Services Agreement the Parties shall start to negotiate in good faith for a prolongation of this Master Services Agreement for a prolongation period of [***]. It is understood that either Party may withdraw from the negotiations and decide not to agree to a prolongation at any time at its discretion.
+
+
+
+17.7
+Emergency Prolongation Right. In any case of termination by either Party or in any other case which results in an expiry or termination of this Master Services Agreement, TowerCo shall, upon written notice of Sunrise (such notice to be given at least twelve (12) months prior to the effective date of the termination or the expiry of this Master Service Agreement) and to the extent possible prolong this Master Service Agreement in respect of up to [***]% of the Radio Tower Sites for twelve (12) months. To the extent possible means, for the purposes of this § 17.7 [***]. Sunrise shall bear all reasonable costs of TowerCo incurred in procuring these Radio Tower Sites as well as the respective Service Fee for such Radio Tower Sites. Once Sunrise has sent such written notice requiring an emergency prolongation, the Parties shall discuss in good faith the details of such prolongation and the relevant processes.
+
+
+
+28
+
+17.8
+Consent to TowerCo’s Request to Terminate a Site Agreement. Provided that Sunrise has given its written consent, TowerCo shall be entitled to terminate any Site Agreement ordinarily or extraordinarily. It is understood, however, that no such consent of Sunrise will be required if TowerCo arranges for an appropriate substitute site [***]. Prior to the termination TowerCo shall [***], if required.
+
+
+
+17.9
+Loss of Site or Infrastructure. TowerCo shall inform Sunrise as soon as reasonably practical after becoming aware of (i) any Site Agreement reasonably likely to be terminated or to end, or (ii) the reasonably likely loss of a Radio Tower Site for any other reason excluding Force Majeur, or (iii) that parts of the Passive Wireless Infrastructure become prohibited by statutory law in an enforceable administrative or judicial order. Where during the term of this Master Services Agreement a Site Agreement is terminated or ends or Passive Wireless Infrastructure becomes prohibited, TowerCo shall, unless the Parties have agreed otherwise, [***]. The Parties will update Exhibit 1 accordingly for documentary purposes in a supplement to this Master Services Agreement.
+
+In case TowerCo does not [***] as set out above within [***] and if such infringement causes an operational issue to Sunrise, (i) the [***] will be [***] in accordance with § 13.2 and (ii) a [***] unless agreed otherwise through the Steering Committee.
+
+For the first full calendar week during which TowerCo [***].
+
+If the infringement of § 17.9 para. 1 sentence 2 of this Master Services Agreement (resulting in an operational issue for Sunrise) relates to [***].
+
+[***]
+
+
+
+17.10
+Loss of Radio Equipment. Sunrise shall remove its Radio Equipment and Ancillary Equipment if its operation or use is prohibited by statutory law in an enforceable administrative or judicial order or if required regulatory approvals for the operation or use of the Radio Equipment or Ancillary Equipment are finally and bindingly not granted or revoked or withdrawn, provided that Sunrise has failed, despite making all reasonable (zumutbar) efforts, including technical alterations, to comply with any requirement of such authority or order or to defend against such order.
+
+
+
+17.11
+Changes in the environment. If the operation of the Radio Equipment of Sunrise on the affected Radio Tower Site is not reasonably possible anymore due to changes in the environment (e.g. an erection of new buildings in the neighbourhood), then § 17.9 will apply accordingly, [***]. If and when TowerCo becomes aware of such potential change in the environment it shall use [***] to find a solution with the relevant third party causing such change in the environment, e.g. a site owner, or, if no solution can be found, to oppose to such change in legal proceedings available to it before the relevant first instance. If the change in the environment occurs the Parties shall [***]. Alternatively, Sunrise may decide [***].
+
+
+
+17.12
+Revocation of Radio Frequencies. Where all of Sunrise’s rights to use radio frequencies are revoked or expire and are not extended and not replaced by Sunrise by other rights to use radio frequencies and Sunrise and all its Affiliates cease to provide mobile network
+
+
+
+29
+
+
+services other than as a reseller or Mobile Virtual Network Operator in Switzerland, Sunrise may terminate this Master Services Agreement as a whole or partially in respect of the affected configuration or Radio Tower Site with a notice period of three (3) months as of the end of the right to use radio frequencies. Sentence 1 shall apply mutatis mutandis for frequency allocations.
+
+In case of such full or partial termination, [***], or, if this Master Services Agreement has been extended, in particular, in accordance with § 17.3, § 17.4, § 17.5 or § 17.6, until the end of the agreed longer term, it being understood, however, [***].
+
+
+
+17.13
+Partial Termination by Sunrise. Sunrise may reduce the total number of the Radio Tower Sites and thereby terminate this Master Services Agreement in part with respect to such individual Radio Tower Sites at any time subject to a six months’ notice period. For the avoidance of doubt, in respect of [***] by Sunrise § 13.2 applies.
+
+
+
+17.14
+Application of the Respiration Rate. The Parties agree that the Respiration Rate will apply to the circumstances set out in § 17.10, § 17.11, § 17.12 and § 17.13. Therefore, in such circumstances [***].
+
+
+
+17.15
+Termination for Serious Reasons. Either Party may terminate this Master Services Agreement with immediate effect in whole for serious reasons (aus wichtigem Grund). A serious reason for termination by the respective other Party exists, including in the following cases:
+
+
+
+ 	17.15.a
+Termination for insolvency: if (i) a Party makes a general assignment for the benefit of creditors (Nachlassvertrag mit Vermögensabtretung); (ii) a resolution is passed for its winding-up with liquidation; or (iii) a Party has been declared bankrupt;
+
+
+
+ 	17.15.b
+[***];
+
+
+
+ 	17.15.c
+[***];
+
+
+
+ 	17.15.d
+[***];
+
+
+
+ 	17.15.e
+[***]; or
+
+
+
+ 	17.15.f
+[***]; or
+
+
+
+ 	17.15.g
+[***].
+
+TowerCo shall inform Sunrise in writing without undue delay of any circumstances that could give rise to [***], stating all circumstances that may be relevant to Sunrise’s decision on exercising the right of termination. Further rights of the Party entitled to terminate this Master Services Agreement shall remain unaffected by the right of termination for serious reasons.
+
+
+
+30
+
+17.16
+Call Option. In the event (i) this Master Services Agreement has been terminated by TowerCo in accordance with § 17.4, or (ii) TowerCo terminates this Master Services Agreement based on statutory law, or (iii) TowerCo or an Affiliate of TowerCo repudiates the validity and/or enforceability of this Master Services Agreement, or (iv) this Master Services Agreement has been terminated by Sunrise for serious reasons in accordance with § 17.15 above, TowerCo hereby offers to Sunrise (A) to transfer all the Passive Wireless Infrastructure as well as (B) to assign to Sunrise all the Site Agreements and any other related agreements (to the extent such agreements allow for transfer to Sunrise) [***]. Sunrise may accept such offer, against payment of the re-transfer price specified below, within three (3) months from the receipt of the termination notice by TowerCo or from issuing the notice of termination by Sunrise and the Parties shall make and take all necessary declarations and steps to bring about such transfer of the Passive Wireless Infrastructure and the Site Agreements as well as the related agreements in question. The re-transfer price for the Passive Wireless Infrastructure and the Site Agreements as well as the related agreements shall be calculated as follows:
+
+If the Master Services Agreement has been terminated by [***] the re-transfer price for [***], shall be the fair market value (the “Fair Market Value”) x [***].
+
+If the Master Services Agreement has been terminated by [***] the re-transfer price for [***] shall be the fair market value (the “Fair Market Value”) x [***].
+
+If the Master Services Agreement is terminated by [***], the re-transfer price for [***] shall be the fair market value (the “Fair Market Value”) x [***].
+
+Unless agreed otherwise by the Parties, Fair Market Value shall be defined as the market value at which [***] would be traded, determined as follows:
+
+
+
+ 	17.16.a
+[***]
+
+
+
+ 	17.16.b
+[***]
+
+
+
+ 	17.16.c
+[***]
+
+
+
+ 	17.16.d
+[***]
+
+
+
+ 	17.16.e
+[***]
+
+
+
+ 	17.16.f
+[***]
+
+
+
+ 	17.16.g
+[***]
+
+
+
+31
+
+17.17
+Advance Payments. In the event of full or partial termination of this Master Services Agreement, Sunrise shall remove its Radio Equipment and Ancillary Equipment from the affected Radio Tower Sites pursuant to § 18 of this Master Services Agreement. Subject to § 18.4 and as long as the reduction of Radio Tower Sites is within the Respiration Rate, TowerCo [***].
+
+§ 18
+
+Decommissioning Obligation on Termination
+
+
+
+18.1
+Removal of Radio Equipment. In the event of full or partial termination of this Master Services Agreement and in case of removal of a Radio Tower Site from the scope of this Master Services Agreement, Sunrise shall remove its Radio Equipment, including Unused Equipment and all other facilities or systems installed by it from the affected Radio Tower Sites at its own expense and restore it to a condition that it can be used by another user or, where this is not possible or reasonable, to a condition that is at least comparable in economic and technical terms. The Parties shall document the status of the respective Radio Tower Site after decommissioning in a handover protocol to be signed by both Parties.
+
+
+
+18.2
+Timing. Unless the Parties agree on a decommissioning plan, decommissioning shall occur (i) within a period of [***] following the termination of this Master Services Agreement or (ii) within a period of [***] following removal of a particular Radio Tower Site from the scope of this Master Services Agreement in respect of that individual Radio Tower Site, subject to any other period ordered by a competent state authority.
+
+
+
+18.3
+Accelerated Timing. In case of termination of this Master Services Agreement or in case of a removal of a Radio Tower Site from the scope of this Master Services Agreement, TowerCo shall be entitled to ask for an accelerated decommissioning of the relevant Radio Tower Site to the extent reasonably possible if and as far as TowerCo agrees to bear the costs for all measures required or expedient for an accelerated decommissioning, if any.
+
+
+
+18.4
+[***]. Sunrise shall [***] until Sunrise has removed its Radio Equipment and Ancillary Equipment from the respective Radio Tower Site.
+
+§ 19
+
+Intentionally Left Blank
+
+§ 20
+
+Deployment of the TowerCo Infrastructure Network
+
+
+
+20.1
+Development of Sunrise’s network. Sunrise is operating an integrated national mobile network. Sunrise is planning to further develop its network and the Parties agree to cooperate in the development of Sunrise’s network. Subject to § 20.2 and § 31, Sunrise can order additional Radio Tower Sites from TowerCo to be built under the terms of the BTS as long as the BTS is in force and under such other roll-out agreements as may be agreed between the Parties once the BTS is terminated or expired. [***].
+
+
+
+32
+
+20.2
+Order Commitment. Sunrise commits to order from TowerCo or an Affiliate (as agreed by the Parties) a total number of [***] additional sites (to provide for its capacity needs) within [***] whereby Sunrise commits to order from TowerCo [***] of these [***] additional sites within [***]. TowerCo shall be the Beneficial Owner of these additional sites and Sunrise shall be entitled to operate its Radio Equipment and Ancilliary Equipment on these additional sites in accordance with this Master Services Agreement. [***].
+
+In addition to the [***] committed sites, Sunrise may order [***] additional sites [***], unless the Parties agree otherwise. It is understood that either Party may withdraw from such negotiations and decide not to agree to any further order at any time at its discretion.
+
+If Sunrise fails to order a committed site in due time (i.e. [***] sites, [***], and for [***] sites [***] and such delay is not caused by TowerCo, Sunrise shall pay to TowerCo a penalty in the amount of CHF [***] per year (pro rata temporis) and per committed site not duly ordered. Such penalty payment obligation shall end [***]. For the avoidance of doubt, the maximum amount payable by Sunrise per committed site not ordered in due time is CHF [***] per year.
+
+For the avoidance of doubt such commitment does not restrict Sunrise’s right to develop and construct with and/or order sites from third parties. To the extent TowerCo does not agree to develop and construct an additional site proposed by Sunrise, the number of additional sites for which Sunrise commits towards TowerCo to order reduces accordingly; in this case § 31 of this Master Services Agreement shall not apply.
+
+If TowerCo fails to develop and make available to Sunrise ready for use by Sunrise’s Radio Equipment and Ancilliary Equipment an ordered Radio Tower Site within the time period of [***] after the relevant due date mutually agreed in the order, without the need for any notice or advance warning, Sunrise may request payment of a contractual penalty in the amount of CHF [***] per delayed Radio Tower Site per week, which shall be payable for [***]. It is understood, however, that the total of this penalty will be immediately due and does not limit any right of Sunrise to claim further damages but shall not exceed the amount of CHF [***] per delayed Radio Tower Site. [***].
+
+Sunrise can exclude up to [***] sites from the [***] committed sites, if TowerCo does not accept the increase in ground lease costs (according to clause 5.2 (b) of Exhibit 6.2) due to any additional MNO but Sunrise insists to build the site anyway.
+
+
+
+20.3
+Responsibility of Sunrise. For clarification purposes the Parties agree that the further development planning of Sunrise’s integrated national mobile network remains the sole responsibility of Sunrise.
+
+If Sunrise does not order sites from TowerCo to the extent and within the timeframe as intended and described in § 20.2 of this Master Services Agreement, this [***].
+
+
+
+20.4
+Cooperation. The Parties shall closely cooperate with each other [***].
+
+
+
+33
+
+20.5
+Expansion of coverage and adaptation of the TowerCo Infrastructure Network. TowerCo may expand the coverage of the TowerCo Infrastructure Network and adapt new parts of the TowerCo Infrastructure Network.
+
+
+
+20.6
+Management of new parts of the TowerCo Infrastructure Network. TowerCo may manage new parts of the TowerCo Infrastructure Network, including (i) the management of licences related to the TowerCo Infrastructure Network and (ii) the prospecting and contracting for new parts of the TowerCo Infrastructure Network.
+
+§ 21
+
+Actions in the TowerCo Infrastructure Network
+
+
+
+21.1
+Actions involving the TowerCo Infrastructure Network. As set out in Exhibit 21, TowerCo may perform as many actions in the TowerCo Infrastructure Network as are necessary to improve the efficiency of TowerCo in managing the TowerCo Infrastructure Network and/or suitably install the equipment of other users.
+
+§ 22
+
+Optimisation of the TowerCo Infrastructure Network
+
+
+
+22.1
+Optimisation. TowerCo is entitled to optimise the TowerCo Infrastructure Network in order to offer a more efficient management, always ensuring the quality levels of the Services to be provided hereunder (“Optimisation”).
+
+
+
+22.2
+Dismantled Infrastructure and Optimised Infrastructure. The Optimisation process for the TowerCo Infrastructure Network may be carried out by TowerCo through dismantling certain infrastructures (“Dismantled Infrastructure”), and uninstalling, transferring and installing the equipment of Sunrise in another infrastructure (“Optimised Infrastructure”), in accordance with the configurations and other terms and conditions of this Master Service Agreement as well as its Exhibits, in particular Exhibit 22 and Exhibit 22.1.
+
+The Optimised Infrastructure shall guarantee the Sunrise quality of service and coverage levels equivalent to those that Sunrise enjoyed in the reference area of the Dismantled Infrastructure.
+
+
+
+22.3
+Relocation of Equipment. TowerCo shall be entitled to relocate the Radio Equipment and Ancillary Equipment of Sunrise in accordance with Exhibits 22 and 22.1 in order to optimise the management of the TowerCo Infrastructure Network respecting and maintaining, in all cases, the agreed quality of the services levels as well as the Reserved Configuration, Additional Configuration and the Golden Infrastructure.
+
+§ 23
+
+[***]
+
+[***].
+
+[***]
+
+
+
+34
+
+§ 24
+
+Transfer of Rights and Obligations
+
+The rights and obligations created by this Master Services Agreement may only be transferred in whole or in part, regardless whether by way of a universal succession (e.g. according to FUSG) or by way of individual succession, with the prior written consent of the other Party, except as set forth in § 25.4 and § 25.5 of this Master Services Agreement. The consent may not be unreasonably withheld or delayed. If together with the intended transfer of the rights and obligations created by this Master Services Agreement TowerCo cannot prove that the Passive Wireless Infrastructure as well as the Site Agreements and any other related agreements will also be transferred correspondingly, Sunrise may withhold its consent. Should TowerCo not be able to transfer certain immaterial amount of the aforementioned agreements TowerCo will maintain and perform, also for the benefit of Sunrise, such agreements and all the relevant services, benefits, costs etc. out of said agreements shall be dealt between the Parties as if such agreements would have been actually transferred, and the Parties as well as the transferee shall discuss in good faith an appropriate alternative solution.
+
+§ 25
+
+Change of Control; Transfer of Radio Tower Sites and Site Agreements
+
+
+
+25.1
+Information by TowerCo. Prior to any Change of Control of TowerCo, including but not limited to future Change of Control of TowerCo, and/or sale of all or part of the Passive Wireless Infrastructure and transfer of all or part of Site Agreements (the latter hereinafter “Transaction”), regardless whether by way of a universal succession (e.g. according to FUSG) or by way of individual succession, TowerCo shall provide the following information to Sunrise (hereinafter “Transfer Notice”):
+
+
+
+ 	25.1.a
+[***]
+
+
+
+ 	25.1.b
+[***]
+
+
+
+ 	25.1.c
+[***]
+
+
+
+25.2
+Consent of Sunrise. TowerCo needs the prior written consent of Sunrise to the Change Parties for the implementation of a Change of Control of TowerCo or a Transaction. Implementation in this sense means the signing or closing of binding agreements or arrangements regarding a Change of Control of TowerCo or a Transaction. [***].
+
+Sunrise shall be obliged to grant its consent within [***] after receipt of the information set out in § 25.1of this Master Services Agreement if in case of a Change of Control of TowerCo or a Transaction the acquiring Change Party is not a Prohibited Transferee.
+
+A “Prohibited Transferee” shall mean a transferee which is either:
+
+
+
+ 	25.2.a
+a Competitor of Sunrise; or
+
+
+
+ 	25.2.b
+has its seat or its main business activities in a country on which the US, the European Union, the United Kingdom and/or Switzerland have imposed a general
+
+
+
+35
+
+
+trade embargo, sanctions (including economical sanctions and trade sanctions) and/or similar; or
+
+
+
+ 	25.2.c
+is directly or indirectly affiliated to a person or entity listed in the “Specially Designated National and Blocked Persons List” published by the US Office of Foreign Assets Control or the “Electronic List of Persons and Entities Subject to Financial Sanctions” published by the European Union or the respective list published by the Swiss State Secretariat for Economic Affairs or the respective list published by the United Kingdom’s HM Treasury and its Office of Financial Sanctions Implementation.
+
+
+
+ 	25.2.d
+a person that purchases all or part of the Passive Wireless Infrastructure, (i) without this Master Services Agreement being transferred to the same person; or (ii) if the said person has not entered into an agreement with Sunrise under which it commits to fulfill all and any obligations under this Master Services Agreement relating to the Passive Wireless Infrastructure [***].
+
+
+
+25.3
+Penalty of TowerCo. In case of infringement of § 25.1 and/or § 25.2 of this Master Services Agreement, without the need for any notice or advance warning by Sunrise, a contractual penalty shall be payable in the amount of CHF [***] from TowerCo to Sunrise for each Radio Tower Site affected by the infringement, or CHF [***] whichever is higher. The penalty will be immediately due and does not limit any right of Sunrise to claim all further damages, whether direct or consequential, arising out of or in connection with the infringement and/or to claim the fulfilment of this Master Services Agreement by TowerCo.
+
+
+
+25.4
+Transfer of Master Services Agreement. In case of a Transaction [***].
+
+
+
+25.5
+No Change of Control of TowerCo or Transaction. To the extent the following actions were exclusively taken for the purpose of securing financing of [***], TowerCo or any of their Affiliates or their operations, [***].
+
+TowerCo is obliged to use [***] to restrict any instruments of security to the necessary degree, to the extent such reduction is possible without economic detriment to the financial, in particular to restrict the assignment of claims by way of security to payment claims under the respective agreements. Furthermore, TowerCo is obliged to use [***] to (i) use as security instruments all assets and rights related to a Radio Tower Site together towards the same financial institution, and (ii) enter into an agreement with such financial institution to the effect that such financial institution can only enforce such instruments of security as a whole, to the extent such agreement is possible without economic detriment to the financing.
+
+TowerCo will inform Sunrise [***] after granting securities according to (i) through (iv) of the first paragraph of this § 25.5 above about such granting of security and, regarding (v), prior to granting securities giving Sunrise thirty (30) Business Days to conduct its good faith review and inform TowerCo whether it agrees with such granting of securities. To the extent a financial institution as beneficiary enforces securities listed under (i) through
+
+
+
+36
+
+(v), including but not limited to the sale of shares in TowerCo or Passive Wireless Infrastructure, the rights of Sunrise under this Master Services Agreement, in particular under § 24 and § 25 of this Master Services Agreement, shall apply.
+
+The Parties agree that assignments of payment claims in the ordinary course of business for the purposes of debt collection are not restricted by this Master Services Agreement.
+
+§ 26
+
+Step-In Right of Sunrise
+
+Step-In Right. In addition to and not in limitation of any other remedy Sunrise may have under this Master Services Agreement, if (i) TowerCo [***], or if (ii) TowerCo is in a material breach of TowerCo’s obligations and TowerCo fails to remedy within [***].
+
+Sunrise’s step-in right shall cease as soon as TowerCo [***] it is in a position to proceed in accordance with the terms of this Master Services Agreement in respect of the Radio Tower Sites and/or Services affected by the step-in.
+
+[***].
+
+[***].
+
+[***].
+
+§ 27
+
+Joint Use of the Database
+
+
+
+27.1
+Sunrise’s Databases. Before this Master Services Agreement becoming effective Sunrise has created the real estate management database (REM) and the Netsite databases. The Database has been created to administer Sunrise’s Radio Tower Sites.
+
+
+
+27.2
+Access and Usage Rights. Sunrise herewith grants to TowerCo the [***] right to access and use a designated part of the real estate management database (REM) and the Netsite database (“Database”) and any data contained therein at the date of the signing of this Master Services Agreement but limited to what is necessary to fulfil its obligations under this Master Services Agreement. Sunrise and TowerCo will agree on the details of the access to the Database made available to TowerCo by Sunrise. It is understood that TowerCo may have to procure for the required license for the relevant software allowing for access to the Database. This right to access and use the Database shall automatically end whenever this Master Services Agreement comes to an end as well as in cases of a re-transfer in whole under § 17.16 of this Master Services Agreement or if the separation of the Database and creation of an independent database of TowerCo in accordance with the Transition Service Agreement has been completed, in cases of partial termination or partial re-transfer limited to the data used for the affected assets.
+
+
+
+37
+
+27.3
+Standard of Care. Both Parties will use [***] to secure that the Database does not become contaminated with any viruses, trojan horses or other malware and that any potential security gaps can be detected and fixed before any such malware or other malicious code can enter the Database.
+
+§ 28
+
+Storage of Personal Data
+
+The Parties agree to the storage of the data recorded in this Master Services Agreement. The provisions of the Data Protection Act, as applicable from time to time, shall apply.
+
+§ 29
+
+Confidentiality
+
+
+
+29.1
+Confidentiality. The Parties agree to keep strictly confidential and not to disclose to a third party the terms of this Master Services Agreement as well as all confidential information regarding business and operational matters of the other Party or any third party involved in or necessary for the performance of this Master Services Agreement and only to use the confidential information in the fulfilment of their contractual rights and obligations under this Master Services Agreement.
+
+
+
+29.2
+Disclosure. A disclosure is not prohibited if and to the extent (i) the other Party gave its consent beforehand in writing (in accordance with art. 13 and art. 14 of the Swiss Code of Obligations), (ii) it is necessary to fulfil the obligations under this Master Services Agreement, (iii) a statutory obligation of disclosure applies, (iv) an order of a court or governmental body requiring disclosure is issued to the Party, (v) such disclosure is made to members of the legal, tax, accounting or financial consultation professions who are subject to a professional duty to maintain secrecy if and to the extent that the disclosure of such information is in the legitimate interest of the disclosing Party, (vi) it is disclosed to financial institutions and potential financial institutions, acquirers and potential acquirers and investors and potential investors it being understood that the persons to whom such disclosure is made will be informed of the confidential nature of such information and instructed and agree to keep such information confidential pursuant to the terms hereof, or (vii) the information was known prior to the information being disclosed to the Party, was or is publicly known or accessible prior to the information being disclosed to the Party or which become publicly known or accessible after the information being disclosed to the Party without breach of this Master Services Agreement by such Party, (viii) as far as to disclose such information to other users or possible tenants is necessary in the context of co-location requests, or (ix) such disclosure is made to an Affiliate of the disclosing Party. In case of any permitted disclosure to a third party (including Affiliates) such third party shall be obliged to keep the confidential information it has received confidential. In the event any Party is required by statutory law or stock exchange regulation to disclose any information on this Master Services Agreement, it shall notify the other Party and the Parties shall cooperate to obtain (to the extent practicable) confidential treatment for the matters disclosed. The Parties agree that the terms of this Master Services Agreement as well as all confidential information regarding business and operational matters of the other
+
+
+
+38
+
+
+Party or any third party involved in or necessary for the performance of this Master Services Agreement may not be disclosed to Prohibited Transferees.
+
+
+
+29.3
+Term. The confidentiality obligations shall remain in effect also after the termination of this Master Services Agreement.
+
+
+
+29.4
+Publicity. The Parties shall restrict the creation of photos, film clips, recordings, etc. of the equipment of the respective other Party and/or its third parties user to purposes of the management of the Radio Tower Sites and this Master Services Agreement. Any publication by TowerCo, in particular in magazines, books, brochures, on the internet or anywhere else publicly, shall be limited to marketing purposes and TowerCo shall undertake reasonable efforts that any radio equipment shown shall not be identified as Sunrise’s Radio Equipment by name or any other reference.
+
+§ 30
+
+Communications
+
+
+
+30.1
+Written Form. All notices, notifications, information and other communications in connection with this Master Services Agreement shall be made in writing. In writing in the sense of this Master Services Agreement shall mean the exchange of letters or correspondence by e-mail, except where stipulated otherwise in this Master Services Agreement or where notarization or another form is required by mandatory law.
+
+The exercise of rights under this Master Services Agreements, such as the exercise of options or the termination, has to occur in any event in writing (in accordance with art. 13 and art. 14 of the Swiss Code of Obligations).
+
+
+
+30.2
+Communications to TowerCo. All communications to TowerCo in connection with this Master Services Agreement shall be directed to:
+
+Swiss Towers AG
+
+Managing Director
+
+[***]
+
+with copy to:
+
+Cellnex Telecom SA
+
+Chief Commercial Officer
+
+[***]
+
+
+
+30.3
+Communications to Sunrise. All communications to Sunrise in connection with this Master Services Agreement shall be directed to:
+
+Sunrise Communications AG
+
+Director Radio and Service Management
+
+Binzmülestrasse 130
+
+8050 Zürich
+
+CH
+
+
+
+39
+
+with copy to:
+
+Sunrise Communications AG
+
+Legal Department
+
+Binzmühlestrasse 130
+
+8050 Zürich
+
+CH
+
+
+
+30.4
+Changes to addresses. The Parties shall inform the respective other Party in writing immediately of any changes to the addresses mentioned in § 30.2 and § 30.3 of this Master Services Agreement. Until such communication, the previous address shall remain in effect.
+
+§ 31
+
+Preferred Supplier
+
+
+
+31.1
+Preferred Supplier for Build-to-suit. If Sunrise intends to build a new site for deployment of its services, the Parties agree to enter into exclusive negotiations for a period of a maximum of [***], during which both Parties will try, in good faith, to reach an agreement, provided that TowerCo [***] (hereinafter “Business Opportunity”).
+
+If during the exclusive negotiations referred to above, the Parties do not reach an agreement regarding the Business Opportunity, Sunrise may contact third parties or initiate a bidding process or alike. TowerCo shall, for a period of [***] from the Closing Date, have [***]. After these [***] the Parties will negotiate in good faith a possible extension of [***].
+
+
+
+31.2
+Preferred Supplier for small cells /DAS (distributed antenna systems). If Sunrise intends to deploy small cells / DAS, the Parties agree to enter into exclusive negotiations for a period of a maximum of [***], during which both Parties will try, in good faith, to reach an agreement, which is consistent with the deployment plans of Sunrise.
+
+If during the exclusive negotiations referred to above, the Parties do not reach an agreement regarding small cells / DAS deployment, Sunrise may contact third parties or initiate a bidding process or alike. TowerCo shall, for a period of [***] from the Closing Date, have [***]. After these [***] the Parties will negotiate in good faith a possible extension of [***]. Notwithstanding the above, Sunrise commits to order [***] small cells / DAS from TowerCo during [***] from [***] provided that such small cells /DAS are provided in line with current market conditions.
+
+
+
+31.3
+TowerCo’s building right. For the avoidance of doubt, nothing of the above shall preclude TowerCo from extending its Passive Wireless Infrastructure and the TowerCo Infrastructure Network, respectively.
+
+
+
+31.4
+Not applicable for Roll-out Sites. This § 31 shall not be applicable in respect of the deployment of the [***] additional sites to be ordered by Sunrise from TowerCo in accordance with § 20 of this Master Services Agreement. This § 31 of this Master Services Agreement shall also not be applicable if Sunrise intends to co-locate on sites of third parties.
+
+
+
+40
+
+§ 32
+
+Steering Committee
+
+
+
+32.1
+Steering Committee. The Parties shall establish a Steering Committee, whose members shall have decision-making power with regard to any matters referred to it by either Party in relation to this Agreement. Exhibit 32 sets out the number of members as well as their respective function, the notice period and form for invitations for meetings, the frequency of the meetings, the invitees of the meetings, the necessary majority to take decisions, the details of the minutes of the meetings as well as details of the escalation.
+
+
+
+32.2
+Members. Sunrise and TowerCo shall nominate their own representatives into each governing body. There shall be no representation by a third party who is not a member of the Committee.
+
+
+
+32.3
+Meetings. Meetings of the Steering Committee shall be conducted on a regular basis. For all meetings, the meeting inviter shall provide a detailed agenda to all invitees for the meeting [***] in advance. If the notice for the meeting is less than [***], the inviter shall provide the detailed agenda along with the invitation.
+
+Any presentations, reports, documents etc. to be presented or discussed during a meeting shall be provided to all invitees no less than [***] in advance. If the notice for the meeting is less than [***], the inviter shall provide the documents etc. along with the invitation.
+
+All meetings will be conducted at Sunrise location, except if the Parties agree differently.
+
+
+
+32.4
+Escalation. Upon a dispute arising which could not be resolved, the Parties representatives will, as soon as reasonably practicable after a written request from either Party to the other Party, meet (by phone or individual conference) in good faith and use reasonable endeavours to resolve such dispute. If the Parties representatives reach an agreement on the resolution of the dispute, the Parties will each procure that such agreement is within [***] reduced to writing and signed by their respective duly authorised representative(s) at which time it will be and remain binding on the Parties. All negotiations between Parties representatives will be conducted in strict confidence. Such negotiations will be without prejudice to the rights of the Parties (and will not be used in evidence and/or referred to in any way without the prior written consent of both Parties) in any future court and/or arbitration proceedings and/or expert determination. If any dispute is not resolved within [***] for whatever reason then either Party may by written notice to the other Party require that such dispute be resolved by escalation to the highest level of escalation. Should the dispute not be resolved by such highest level of escalation within [***], then either Party may commence the dispute resolution process in accordance with § 35.1 and § 35.2 of this Master Services Agreement (Applicable Law and Arbitration). Either Party may request that the matter is referred to a higher level of escalation more expeditiously in case of urgency.
+
+
+
+32.5
+Good Faith Approach. The Parties agree to act in good faith to try to resolve any conflict (i) before exercising any right to terminate this Master Services Agreement, i.e. they agree not to terminate this Master Services Agreement in case of non-fulfilment by one of the
+
+
+
+41
+
+
+Parties of any of its obligations under this Master Services Agreement without previously [***].
+
+§ 33
+
+Financial Information
+
+
+
+33.1
+TowerCo will provide Sunrise, on a quarterly basis, i.e., as per 31 March, 30 June, 30 September and 31 December of each calendar year (in each case within [***] following such date), for the first time as of 30 September 2017, with a compliance certificate (signed by the Company’s chief financial officer) (the “Compliance Certificate”) stating whether the net assets of TowerCo cover at least [***].
+
+
+
+33.2
+In addition, TowerCo will provide to Sunrise a list of overdue payments [***] to landlords.
+
+
+
+33.3
+Information. Each Party shall promptly give notice to the other Party of
+
+
+
+ 	33.3.a
+material litigations relating to the Radio Tower Sites and the Radio Equipment and/or Ancilliary Equipment;
+
+
+
+ 	33.3.b
+any circumstances which could materially affect the fulfilment by that Party of its obligations under this Master Services Agreement;
+
+
+
+ 	33.3.c
+the occurrence of any events that, with the giving of notice or the passing of time, or both, would constitute a serious reason for termination by the other Party.
+
+§ 34
+
+Reporting of TowerCo
+
+
+
+34.1
+As long as (i) [***] is an Affiliate of [***] and (ii) investment vehicle(s) managed or advised by [***] are direct or indirect shareholders of TowerCo with a share of [***] in the share capital of TowerCo, should [***], TowerCo shall inform Sunrise within ten (10) Business Days after TowerCo has obtained knowledge of the agreed transaction either (a) through public announcement by [***] or (b) through a notification to this effect from Sunrise, if and to which extent TowerCo anticipates that this fact may lead to a commercial conflict with the relationship between TowerCo and Sunrise under this Agreement and how TowerCo could take commercially reasonable measures to properly address such conflict.
+
+
+
+34.2
+[***].
+
+§ 35
+
+Final Provisions
+
+
+
+35.1
+Applicable Law. This Master Services Agreement shall be governed by substantive Swiss law excluding Swiss International Private Law (IPRG). The United Nations Convention on Contracts for the International Sale of Goods (CISG) shall not apply.
+
+
+
+35.2
+Arbitration. Any dispute, controversy or claim arising out of, or in relation to, this Master Services Agreement, including the validity, invalidity, breach, or termination thereof, shall
+
+
+
+42
+
+
+be resolved by arbitration in accordance with the Swiss Rules of International Arbitration of the Swiss Chambers’ Arbitration Institution in force on the date on which the Notice of Arbitration is submitted in accordance with these rules.
+
+The number of arbitrators shall be three (3). In order to be eligible, arbitrators shall have a Swiss law degree. The seat of the arbitration shall be Zürich (Switzerland). The arbitral proceedings shall be conducted in English language.
+
+In the event of a domestic dispute in the sense of Article 353(1) of the Swiss Code of Civil Procedure, the application of the third part of the Swiss Code of Civil Procedure on domestic arbitrations shall be excluded and the 12th chapter of the Swiss Private International Law Act on international arbitrations shall apply.
+
+
+
+35.3
+Nature of the Agreement. The Parties agree and declare that because of its scope and essentials this Master Services Agreement does not qualify as mandate agreement in accordance with the Swiss Code of Obligations. Therefore, none of the Parties has a right to invoke or exercise a right of termination (for convenience) at any time in accordance with Article 404 para. l of the Swiss Code of Obligations. The Parties further agree and declare that all statutory termination rights, other than for serious reasons, if any, are expressly excluded.
+
+
+
+35.4
+VAT. Any amounts agreed upon in this Master Services Agreement are to be understood as net amounts in the meaning of the Federal Act on Value-Added Tax (MWSTG), excluding VAT. To the extent turnovers are deemed to be tax-free turnovers with regard to which opting for taxation is generally possible, the Parties hereby agree that with regard to such turnovers TowerCo will decide whether to opt for taxation. The value added tax number issued by the Swiss Federal Tax Administration (UID-Nummer) of TowerCo is CHE-239.486.l 17. MWSTG. TowerCo shall be obliged to notify Sunrise immediately of any amendment of the value added tax identification number of TowerCo. If TowerCo decides not to opt for taxation, the repayment of previously deducted input VAT in connection with the tower business due to the change in usage according to article 31 MWSTG must be borne by TowerCo.
+
+
+
+35.5
+Written Form Requirement for Amendments. Amendments and supplements to this Master Services Agreement shall only be valid to the extent they have been agreed in writing (in accordance with art. 13 and art. 14 of the Swiss Code of Obligations). This also applies to any amendment, supplement or waiver of the written form requirement. However, with regard to Exhibit 1 § 35.6 shall apply.
+
+
+
+35.6
+Exhibits. All exhibits referred to herein form an integral part of this Master Services Agreement. If there is a conflict between the terms of this Master Services Agreement and any of the exhibits, including sample calculations in exhibits, the provisions of this Master Services Agreement shall prevail. Exhibit 1 is attached to this Master Services Agreement on an usb stick and has also been exchanged between the Parties as electronic copy. To the extent Exhibit 1 shall be amended and supplemented pursuant to this Master Services Agreement this may occur by producing a new read-only electronic copy only. A copy of the new read-only electronic copy has to be provided to each party. Each Party can request
+
+
+
+43
+
+
+the amendment or supplement of Exhibit 1 in writing. All other exhibits are attached to this Master Services Agreement as hard copy and shall be amended and supplemented in writing only (in accordance with art. 13 and art. 14 of the Swiss Code of Obligations).
+
+
+
+35.7
+Comprehensive Agreement. This Master Services Agreement conclusively contains all the agreements of the Parties reached on its subject matter and supersedes all verbal or written negotiations, agreements and understandings that the Parties may have entered into previously in respect of the subject matter of the Agreement or parts thereof. In particular this Master Services Agreement replaces the original master services agreement signed by the Parties on the Effective Date.
+
+
+
+35.8
+Severability. If any provision of this Master Services Agreement is or becomes wholly or partially void, invalid or unenforceable, the validity and enforceability of any other remaining provisions shall not be affected. The void, invalid or unenforceable provision shall, to the extent permitted by statutory law, be deemed replaced by such valid and enforceable provision that comes closest to the economic purpose pursued by the void, invalid or unenforceable provision in terms of subject matter, dimension, time, place or scope. The same shall apply to any gaps in this Master Services Agreement.
+
+
+
+35.9
+Ne bis in idem. Neither Party (either directly or through an Affiliate) shall be compensated under the Master Services Agreement, SPA, SLA, TSA or BTS for the same damage twice.
+
+§ 36
+
+Effectiveness of this Master Services Agreement
+
+This Master Services Agreement shall become, once duly executed by all Parties, legally effective on its signing date with retroactive economic effect in respect of the Service Fees and costs payable by the Parties under this Masters Services Agreement and Sunrise’s right to use the Radio Tower Sites in accordance with the terms of this Masters Services Agreement as of 1 January 2017. To bring about the retroactive economic effect of this Master Services Agreement the Parties shall put each other in a position as if the Service Fee and the cost payable under this Master Services Agreement had been paid as from 1 January 2017. [***].
+
+Exhibits
+
+Exhibit 1 – Radio Tower Sites et al.
+
+Exhibit 3.4 – Access Procedure & Access Protocol
+
+Exhibit 5 – Configurations & Change in the Infrastructure
+
+Exhibit 6.2 – Service Fee Adjustment
+
+Exhibit 9.2 – Key Performance Indicators & Service Levels
+
+Exhibit 10.1 – Further Services from TowerCo to Sunrise
+
+Exhibit 15 – Economic Incentives
+
+
+
+44
+
+Exhibit 18.13 – Draft sample “Re-Transfer Agreement”
+
+Exhibit 21 – Actions in the TowerCo Infrastructure Network
+
+Exhibit 22/22.1 – Optimisation of the TowerCo Infrastructure Network & Sample of Decommissioning Evaluation Procedure
+
+Exhibit 32 – Steering Committee
+
+
+
+Zürich, 19 July 2017
+Swiss Towers AG
+Signature:
+/s/ Andre Krause
+
+
+Name:	  	Andre Krause, Chairman of the Board
+Signature:
+/s/ Elmar Grasser
+
+
+Name:	  	Elmar Grasser, Member of the Board
+Zürich, 19 July 2017
+Sunrise Communications AG
+Signature:
+/s/ Michael Martin
+
+
+Name:	  	Michael Martin, Director Radio, Transport & Quality Management
+Signature:
+/s/ Patrick Alain Meier
+
+
+Name:	  	Patrick Alain Meier, Director, Head of Legal
+
+
