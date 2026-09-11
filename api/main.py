@@ -8,6 +8,7 @@ from database import get_db, get_engine
 from models import Base, Contract, Clause, RiskAssessment, RedlineSuggestion, AuditLog
 from clause_splitter import  split_into_clauses
 from risk_agent import  analyze_clause_risk,apply_guardrails,save_risk_assessment
+from guardrails import  validate_input_file,detect_prompt_injection
 
 app = FastAPI(title="Contract Risk Analyzer & Negotiator")
 
@@ -28,12 +29,10 @@ def health():
 
 @app.post("/contracts/upload")
 def upload_contract(file: UploadFile = File(...), db: Session = Depends(get_db)):
-    if not file.filename.lower().endswith((".pdf", ".txt")):
-        raise HTTPException(400, "Only PDF or TXT contracts are supported")
-
     contents = file.file.read()
-    if len(contents) > 10 * 1024 * 1024:
-        raise HTTPException(400, "File too large (max 10MB)")
+    validation = validate_input_file(file.filename, len(contents))
+    if not validation["valid"]:
+        raise HTTPException(400, "; ".join(validation["errors"]))
 
     file_hash = hashlib.sha256(contents).hexdigest()
 
@@ -120,6 +119,19 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db)):
 
     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
         text_content = f.read()
+
+    injection_check = detect_prompt_injection(text_content)
+    if injection_check["injection_detected"]:
+        log = AuditLog(
+            actor="system",
+            action="prompt_injection_flagged",
+            entity_type="contract",
+            entity_id=contract.id,
+            details=f"Matched patterns: {injection_check['matched_patterns']}",
+        )
+        db.add(log)
+        db.commit()
+
 
     raw_clauses = split_into_clauses(text_content)
 
