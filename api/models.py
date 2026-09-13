@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, Float, Boolean, DateTime, ForeignKey, Text, Enum
+from sqlalchemy import Column, String, Float, Boolean, DateTime, ForeignKey, Text, Enum, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from pgvector.sqlalchemy import Vector
 from sqlalchemy.orm import declarative_base, relationship
@@ -16,6 +16,14 @@ class ClauseType(str, enum.Enum):
     payment = "payment"
     other = "other"
 
+class User(Base):
+    __tablename__ = "users"
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    email = Column(String, unique=True, nullable=False, index=True)
+    hashed_password = Column(String, nullable=False)
+    role = Column(String, default="user")
+    created_at = Column(DateTime, default=datetime.utcnow)
+
 
 class Contract(Base):
     __tablename__ = "contracts"
@@ -23,6 +31,8 @@ class Contract(Base):
     filename = Column(String, nullable=False)
     file_hash = Column(String, unique=True, nullable=False, index=True)
     status = Column(String, default="uploaded")
+    version = Column(Integer, default=1)
+    parent_contract_id = Column(UUID(as_uuid=True), ForeignKey("contracts.id"), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     clauses = relationship("Clause", back_populates="contract")
@@ -82,3 +92,4 @@ class AuditLog(Base):
     entity_id = Column(UUID(as_uuid=True))
     details = Column(Text, nullable=True)
     timestamp = Column(DateTime, default=datetime.utcnow)
+
