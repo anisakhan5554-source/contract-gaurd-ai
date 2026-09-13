@@ -105,7 +105,17 @@ def test_cross_contract_leakage():
         contracts = r2.json()
         print(f"FINDING ⚠️ | User can see {len(contracts)} contract(s) — no ownership isolation implemented yet")
     else:
-        print("BLOCKED ✅ | Access denied")
+        print("BLOCKED  | Access denied")
+
+def test_pii_detection():
+    print("\n=== PII DETECTION TEST ===\n")
+    from guardrails import detect_pii
+    sample = "Contact John at john.doe@email.com or 555-123-4567. SSN: 123-45-6789"
+    result = detect_pii(sample)
+    if result["pii_detected"]:
+        print(f"DETECTED  | Found: {result['types']}")
+    else:
+        print("MISSED ❌ | PII not detected")
 
 if __name__ == "__main__":
     run_red_team()
@@ -115,3 +125,4 @@ if __name__ == "__main__":
     test_oversized_file_attack()
     test_output_manipulation()
     test_cross_contract_leakage()
+    test_pii_detection()

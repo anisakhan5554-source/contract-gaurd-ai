@@ -48,3 +48,17 @@ def detect_prompt_injection(text: str) -> dict:
         "injection_detected": len(matches) > 0,
         "matched_patterns": matches
     }
+
+
+def detect_pii(text: str) -> dict:
+    patterns = {
+        "ssn": r'\b\d{3}-\d{2}-\d{4}\b',
+        "email": r'\b[\w.-]+@[\w.-]+\.\w+\b',
+        "phone": r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b',
+    }
+    found = {}
+    for label, pattern in patterns.items():
+        matches = re.findall(pattern, text)
+        if matches:
+            found[label] = len(matches)
+    return {"pii_detected": len(found) > 0, "types": found}
