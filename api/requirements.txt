@@ -5,7 +5,7 @@ psycopg2-binary==2.9.9
 pgvector==0.3.4
 alembic==1.13.3
 pydantic==2.9.2
-python-multipart==0.0.12
+python-multipart==0.0.18
 google-genai==0.3.0
 pytest==8.3.3
 langgraph==0.2.28
