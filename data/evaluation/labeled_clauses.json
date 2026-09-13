@@ -1,0 +1,7 @@
+[
+  {"text": "Company shall indemnify Executive against any and all claims, without any cap or limitation on liability.", "expected_risk": "high"},
+  {"text": "This agreement shall commence on the effective date and continue for one year.", "expected_risk": "low"},
+  {"text": "Employee shall receive an annual salary of $75,000, plus an uncapped discretionary bonus with no clawback provision.", "expected_risk": "high"},
+  {"text": "Either party may terminate this agreement with 30 days written notice.", "expected_risk": "low"},
+  {"text": "Executive's employment may be terminated by Forge for cause at any time.", "expected_risk": "medium"}
+]
