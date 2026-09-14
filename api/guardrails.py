@@ -62,3 +62,9 @@ def detect_pii(text: str) -> dict:
         if matches:
             found[label] = len(matches)
     return {"pii_detected": len(found) > 0, "types": found}
+
+def redact_pii(text: str) -> str:
+    text = re.sub(r'\b\d{3}-\d{2}-\d{4}\b', '[REDACTED-SSN]', text)
+    text = re.sub(r'\b[\w.-]+@[\w.-]+\.\w+\b', '[REDACTED-EMAIL]', text)
+    text = re.sub(r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b', '[REDACTED-PHONE]', text)
+    return text

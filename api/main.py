@@ -3,17 +3,29 @@ import hashlib
 from uuid import UUID
 from fastapi import FastAPI, UploadFile, File, Depends, HTTPException
 from sqlalchemy.orm import Session
-
+import re
 from database import get_db, get_engine
 from models import Base, Contract, Clause, RiskAssessment, RedlineSuggestion, AuditLog
-from clause_splitter import  split_into_clauses
-from risk_agent import  analyze_clause_risk,apply_guardrails,save_risk_assessment
-from guardrails import  validate_input_file,detect_prompt_injection
+from clause_splitter import split_into_clauses
+from risk_agent import analyze_clause_risk, apply_guardrails, save_risk_assessment
+from guardrails import validate_input_file, detect_prompt_injection
 from version_diff import diff_clauses
+from agent_graph import contract_analysis_graph
+from schemas import RiskAssessmentOutput
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from auth import hash_password, verify_password, create_access_token, decode_access_token
 from models import User
 from jose import JWTError
+import logging
+import json
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("contractguard")
+
+def log_event(event: str, **kwargs):
+    logger.info(json.dumps({"event": event, **kwargs}))
+
+app = FastAPI(title="Contract Risk Analyzer & Negotiator")
 
 app = FastAPI(title="Contract Risk Analyzer & Negotiator")
 
@@ -32,10 +44,8 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     return user
 
 
-
 UPLOAD_DIR = "data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
-
 
 
 @app.on_event("startup")
@@ -49,7 +59,7 @@ def health():
 
 
 @app.post("/contracts/upload")
-def upload_contract(file: UploadFile = File(...), db: Session = Depends(get_db),current_user:User=Depends(get_current_user)):
+def upload_contract(file: UploadFile = File(...), db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contents = file.file.read()
     validation = validate_input_file(file.filename, len(contents))
     if not validation["valid"]:
@@ -103,7 +113,7 @@ def upload_contract(file: UploadFile = File(...), db: Session = Depends(get_db),
 
 
 @app.get("/contracts")
-def list_contracts(db: Session = Depends(get_db),current_user:User=Depends(get_current_user)):
+def list_contracts(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contracts = db.query(Contract).all()
     return [
         {"id": str(c.id), "filename": c.filename, "status": c.status, "created_at": c.created_at}
@@ -112,7 +122,7 @@ def list_contracts(db: Session = Depends(get_db),current_user:User=Depends(get_c
 
 
 @app.get("/contracts/{contract_id}/clauses")
-def get_clauses(contract_id: UUID, db: Session = Depends(get_db),current_user:User=Depends(get_current_user)):
+def get_clauses(contract_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contract = db.query(Contract).filter(Contract.id == contract_id).first()
     if not contract:
         raise HTTPException(404, "Contract not found")
@@ -143,13 +153,14 @@ def get_audit_log(db: Session = Depends(get_db)):
 
 
 @app.post("/contracts/{contract_id}/analyze")
-def analyze_contract(contract_id: UUID, db: Session = Depends(get_db),current_user:User=Depends(get_current_user)):
+def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contract = db.query(Contract).filter(Contract.id == contract_id).first()
     if not contract:
         raise HTTPException(404, "Contract not found")
-    existing_assessments = db.query(RiskAssessment).join(Clause).filter(Clause.contract_id == contract.id).count()
-    if existing_assessments > 0:
-        raise HTTPException(400, "Contract already analyzed. Delete existing assessments to re-run.")
+
+    # existing_assessments = db.query(RiskAssessment).join(Clause).filter(Clause.contract_id == contract.id).count()
+    # if existing_assessments > 0:
+    #     raise HTTPException(400, "Contract already analyzed. Delete existing assessments to re-run.")
 
     file_path = None
     for filename in os.listdir(UPLOAD_DIR):
@@ -172,11 +183,10 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db),current_us
             entity_id=contract.id,
             details=f"Matched patterns: {injection_check['matched_patterns']}",
         )
+
         db.add(log)
         db.commit()
-
-
-    raw_clauses = split_into_clauses(text_content)
+        raw_clauses = split_into_clauses(text_content)
 
     results = []
     for clause_text in raw_clauses:
@@ -186,8 +196,21 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db),current_us
         db.refresh(clause)
 
         try:
-            assessment = analyze_clause_risk(clause_text)
-            guardrail_result = apply_guardrails(assessment)
+            graph_result = contract_analysis_graph.invoke({
+                "clause_text": clause_text,
+                "precedents": None,
+                "risk_assessment": None,
+                "guardrail_result": None,
+                "redline": None,
+                "redline_scope_check": None,
+                "error": None
+            })
+
+            if graph_result.get("error"):
+                raise Exception(graph_result["error"])
+
+            assessment = RiskAssessmentOutput(**graph_result["risk_assessment"])
+            guardrail_result = graph_result["guardrail_result"]
             save_risk_assessment(clause.id, assessment, guardrail_result, db=db)
 
             log = AuditLog(
@@ -199,6 +222,9 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db),current_us
             )
             db.add(log)
             db.commit()
+            log_event("clause_analyzed", clause_id=str(clause.id), risk_level=assessment.risk_level.value,
+                      confidence=assessment.confidence)
+
 
             results.append({
                 "clause_id": str(clause.id),
@@ -219,7 +245,7 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db),current_us
 
 
 @app.get("/contracts/{contract_id}/history")
-def get_contract_history(contract_id: UUID, db: Session = Depends(get_db),current_user:User=Depends(get_current_user)):
+def get_contract_history(contract_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contract = db.query(Contract).filter(Contract.id == contract_id).first()
     if not contract:
         raise HTTPException(404, "Contract not found")
@@ -239,7 +265,7 @@ def get_contract_history(contract_id: UUID, db: Session = Depends(get_db),curren
 
 
 @app.post("/contracts/{v2_contract_id}/compare")
-def compare_versions(v2_contract_id: UUID, db: Session = Depends(get_db),current_user:User=Depends(get_current_user)):
+def compare_versions(v2_contract_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     v2_contract = db.query(Contract).filter(Contract.id == v2_contract_id).first()
     if not v2_contract:
         raise HTTPException(404, "Contract not found")
@@ -254,7 +280,7 @@ def compare_versions(v2_contract_id: UUID, db: Session = Depends(get_db),current
     if not v2_clauses_raw:
         raise HTTPException(400, "Version 2 has not been analyzed yet. Run /analyze first.")
 
-    diff_result = diff_clauses(v1_clauses, v2_clauses_raw,similarity_threshold=0.5)
+    diff_result = diff_clauses(v1_clauses, v2_clauses_raw, similarity_threshold=0.5)
 
     comparison_results = []
     regressions = []
@@ -358,4 +384,27 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         raise HTTPException(401, "Incorrect email or password")
     token = create_access_token({"sub": str(user.id)})
     return {"access_token": token, "token_type": "bearer"}
+
+@app.get("/contracts/{contract_id}/pending-review")
+def get_pending_review(contract_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    contract = db.query(Contract).filter(Contract.id == contract_id).first()
+    if not contract:
+        raise HTTPException(404, "Contract not found")
+    pending = []
+    for clause in contract.clauses:
+        if clause.risk_assessment and clause.risk_assessment.reviewed_by_human:
+            pending.append({
+                "clause_id": str(clause.id),
+                "text": clause.text[:150],
+                "risk_score": clause.risk_assessment.risk_score,
+                "rationale": clause.risk_assessment.rationale,
+            })
+    return {"contract_id": str(contract.id), "pending_review_count": len(pending), "clauses": pending}
+
+
+def redact_pii(text: str) -> str:
+    text = re.sub(r'\b\d{3}-\d{2}-\d{4}\b', '[REDACTED-SSN]', text)
+    text = re.sub(r'\b[\w.-]+@[\w.-]+\.\w+\b', '[REDACTED-EMAIL]', text)
+    text = re.sub(r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b', '[REDACTED-PHONE]', text)
+    return text
 

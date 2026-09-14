@@ -63,6 +63,8 @@ def analyze_clause_risk(clause_text: str, max_retries: int = 3) -> RiskAssessmen
                 model="models/gemini-3.6-flash",
                 contents=prompt
             )
+            if hasattr(response, 'usage_metadata') and response.usage_metadata:
+                print(f"[COST] Tokens used: {response.usage_metadata}")
             raw_text = response.text.strip()
 
             if raw_text.startswith("```"):

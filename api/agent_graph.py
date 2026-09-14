@@ -5,6 +5,11 @@ from retrieval import hybrid_search_clauses
 from risk_agent import analyze_clause_risk, apply_guardrails
 from schemas import RiskAssessmentOutput
 from risk_agent import generate_redline, check_redline_scope
+import os
+from langsmith import Client
+
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = "contractguard-ai"
 
 
 class ContractAnalysisState(TypedDict):

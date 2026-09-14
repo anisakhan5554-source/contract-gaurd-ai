@@ -117,6 +117,16 @@ def test_pii_detection():
     else:
         print("MISSED ❌ | PII not detected")
 
+def test_pii_redaction():
+    print("\n=== PII REDACTION TEST ===\n")
+    from guardrails import redact_pii
+    sample = "Contact john@email.com or 555-123-4567, SSN 123-45-6789"
+    redacted = redact_pii(sample)
+    if "@" not in redacted and "123-45-6789" not in redacted:
+        print(f"REDACTED ✅ | Result: {redacted}")
+    else:
+        print(f"FAILED ❌ | PII still present: {redacted}")
+
 if __name__ == "__main__":
     run_red_team()
     test_authorization_attack()
@@ -126,3 +136,4 @@ if __name__ == "__main__":
     test_output_manipulation()
     test_cross_contract_leakage()
     test_pii_detection()
+    test_pii_redaction()
