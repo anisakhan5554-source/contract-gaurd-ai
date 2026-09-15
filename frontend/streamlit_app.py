@@ -58,7 +58,20 @@ with tab1:
                 st.error(r.text)
 
 with tab2:
-    cid = st.text_input("Contract ID", value=st.session_state.get("last_contract_id", ""))
+    st.header("Contract Risk Review")
+
+    contracts_resp = requests.get(f"{API_BASE}/contracts", headers=headers)
+    contract_options = {}
+    if contracts_resp.status_code == 200:
+        for c in contracts_resp.json():
+            contract_options[f"{c['filename']} - {c['id'][:8]}"] = c['id']
+
+    if contract_options:
+        selected_label = st.selectbox("Select your contract", list(contract_options.keys()))
+        cid = contract_options[selected_label]
+    else:
+        cid = st.text_input("Contract ID (no contracts found, paste manually)", value=st.session_state.get("last_contract_id", ""))
+
     if cid:
         r = requests.get(f"{API_BASE}/contracts/{cid}/clauses", headers=headers)
         if r.status_code == 200:
@@ -69,8 +82,18 @@ with tab2:
                 icon = "🔴" if risk >= 0.75 else "🟡" if risk >= 0.5 else "🟢"
                 with st.expander(f"{icon} {c.get('clause_type')} — Risk {risk}"):
                     st.write(c["text"][:500])
-                    st.write(f"Rationale: {c.get('rationale')}")
-                    st.write(f"Human review needed: {c.get('reviewed_by_human')}")
+                    st.write(f"*Rationale:* {c.get('rationale')}")
+                    st.write(f"*Human review needed:* {c.get('reviewed_by_human')}")
+
+                    if st.button(f"Why this risk level?", key=f"ev_{c['clause_id']}"):
+                        ev_r = requests.get(f"{API_BASE}/clauses/{c['clause_id']}/evidence", headers=headers)
+                        if ev_r.status_code == 200:
+                            st.markdown(
+                                "*This assessment was grounded by comparing your clause against these reference contract clauses from our precedent library:*")
+                            for p in ev_r.json()["precedents"]:
+                                st.write(f"📄 Reference: {p['source']} — Similarity: {p.get('hybrid_score', 0):.0%}")
+                                st.caption(f'"{p["text"][:200]}..."')
+                                st.divider()
         else:
             st.error(r.text)
 
@@ -87,7 +110,7 @@ with tab3:
             if data["regressions_detected"]:
                 st.error(f"⚠️ {len(data['regressions'])} risk regression(s) detected!")
                 for r in data["regressions"]:
-                    st.write(f"*{r['v1_risk_level']} → {r['v2_risk_level']}*")
+                    st.write(f"{r['v1_risk_level']} → {r['v2_risk_level']}")
                     st.write(r["v2_text_preview"])
                     st.divider()
 
