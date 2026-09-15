@@ -33,6 +33,7 @@ class Contract(Base):
     status = Column(String, default="uploaded")
     version = Column(Integer, default=1)
     parent_contract_id = Column(UUID(as_uuid=True), ForeignKey("contracts.id"), nullable=True)
+    owner_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     clauses = relationship("Clause", back_populates="contract")

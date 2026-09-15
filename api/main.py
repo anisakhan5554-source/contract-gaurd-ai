@@ -18,6 +18,7 @@ from models import User
 from jose import JWTError
 import logging
 import json
+from retrieval import hybrid_search_clauses
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("contractguard")
@@ -94,6 +95,8 @@ def upload_contract(file: UploadFile = File(...), db: Session = Depends(get_db),
         status="uploaded",
         version=new_version,
         parent_contract_id=parent_id,
+        owner_id=current_user.id,
+
     )
     db.add(contract)
     db.commit()
@@ -114,7 +117,7 @@ def upload_contract(file: UploadFile = File(...), db: Session = Depends(get_db),
 
 @app.get("/contracts")
 def list_contracts(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    contracts = db.query(Contract).all()
+    contracts = db.query(Contract).filter(Contract.owner_id == current_user.id).all()
     return [
         {"id": str(c.id), "filename": c.filename, "status": c.status, "created_at": c.created_at}
         for c in contracts
@@ -158,10 +161,6 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_u
     if not contract:
         raise HTTPException(404, "Contract not found")
 
-    # existing_assessments = db.query(RiskAssessment).join(Clause).filter(Clause.contract_id == contract.id).count()
-    # if existing_assessments > 0:
-    #     raise HTTPException(400, "Contract already analyzed. Delete existing assessments to re-run.")
-
     file_path = None
     for filename in os.listdir(UPLOAD_DIR):
         if filename.startswith(contract.file_hash):
@@ -183,10 +182,10 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_u
             entity_id=contract.id,
             details=f"Matched patterns: {injection_check['matched_patterns']}",
         )
-
         db.add(log)
         db.commit()
-        raw_clauses = split_into_clauses(text_content)
+
+    raw_clauses = split_into_clauses(text_content)
 
     results = []
     for clause_text in raw_clauses:
@@ -213,6 +212,15 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_u
             guardrail_result = graph_result["guardrail_result"]
             save_risk_assessment(clause.id, assessment, guardrail_result, db=db)
 
+            if graph_result.get("redline"):
+                redline_data = graph_result["redline"]
+                redline_record = RedlineSuggestion(
+                    clause_id=clause.id,
+                    suggested_text=redline_data["suggested_rewrite"],
+                )
+                db.add(redline_record)
+                db.commit()
+
             log = AuditLog(
                 actor="risk_agent",
                 action="analyzed_clause",
@@ -224,7 +232,6 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_u
             db.commit()
             log_event("clause_analyzed", clause_id=str(clause.id), risk_level=assessment.risk_level.value,
                       confidence=assessment.confidence)
-
 
             results.append({
                 "clause_id": str(clause.id),
@@ -407,4 +414,13 @@ def redact_pii(text: str) -> str:
     text = re.sub(r'\b[\w.-]+@[\w.-]+\.\w+\b', '[REDACTED-EMAIL]', text)
     text = re.sub(r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b', '[REDACTED-PHONE]', text)
     return text
+
+
+@app.get("/clauses/{clause_id}/evidence")
+def get_clause_evidence(clause_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    clause = db.query(Clause).filter(Clause.id == clause_id).first()
+    if not clause:
+        raise HTTPException(404, "Clause not found")
+    precedents = hybrid_search_clauses(clause.text, top_k=3)
+    return {"clause_id": str(clause_id), "precedents": precedents}
 
