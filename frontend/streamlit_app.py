@@ -80,18 +80,22 @@ with tab2:
                 if risk is None:
                     continue
                 icon = "🔴" if risk >= 0.75 else "🟡" if risk >= 0.5 else "🟢"
-                with st.expander(f"{icon} {c.get('clause_type')} — Risk {risk}"):
+                with st.expander(f"{icon} {c.get('clause_type')} — Risk {risk} ({'HIGH' if risk>=0.75 else 'MEDIUM' if risk>=0.5 else 'LOW'})"):
+                    st.markdown(f"*Clause:*")
                     st.write(c["text"][:500])
-                    st.write(f"*Rationale:* {c.get('rationale')}")
-                    st.write(f"*Human review needed:* {c.get('reviewed_by_human')}")
+                    st.markdown(f"*Why this risk level?*")
+                    st.write(c.get('rationale', 'N/A'))
+                    col1, col2, col3 = st.columns(3)
+                    col1.metric("Confidence", f"{c.get('confidence', 0)*100:.0f}%")
+                    col2.metric("Risk Score", f"{risk}")
+                    col3.metric("Human Review", "Required ⚠️" if c.get('reviewed_by_human') else "Not needed ✅")
 
-                    if st.button(f"Why this risk level?", key=f"ev_{c['clause_id']}"):
+                    if st.button(f"Show precedent evidence", key=f"ev_{c['clause_id']}"):
                         ev_r = requests.get(f"{API_BASE}/clauses/{c['clause_id']}/evidence", headers=headers)
                         if ev_r.status_code == 200:
-                            st.markdown(
-                                "*This assessment was grounded by comparing your clause against these reference contract clauses from our precedent library:*")
+                            st.markdown("*Grounded by comparing against these reference clauses:*")
                             for p in ev_r.json()["precedents"]:
-                                st.write(f"📄 Reference: {p['source']} — Similarity: {p.get('hybrid_score', 0):.0%}")
+                                st.write(f"📄 {p['source']} — Similarity: {p.get('hybrid_score', 0):.0%}")
                                 st.caption(f'"{p["text"][:200]}..."')
                                 st.divider()
         else:
