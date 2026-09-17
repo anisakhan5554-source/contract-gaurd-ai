@@ -773,11 +773,7 @@ The remaining portfolio work is primarily presentation evidence: final demo reco
 ```text
 
 
-**Demo:** `TODO — add final video link`
-
----
-
-# Screenshots
+**Demo:  link
 
 
 ### Contract Analysis
@@ -788,33 +784,20 @@ Risk assessment + clause analysis + supporting RAG evidence
 ```
 
 ### Version Intelligence
-
-```text
-TODO — Add screenshot showing:
-Version 1 → Version 2 clause comparison + risk regression
+Version ![Screenshot 2026-09-17 115219.png](../../Pictures/Screenshot%202026-09-17%20115219.png)1 → Version 2 clause comparison + risk regression
 ```
 
-### Human Review & Redlining
 
-```text
-TODO — Add screenshot showing:
 AI redline suggestion + human review workflow
-```
+![Screenshot 2026-09-17 115050.png](../../Pictures/Screenshot%202026-09-17%20115050.png)
 
 ### Auditability
-
-```text
-TODO — Add screenshot showing:
 Audit log + model/prompt version information
-```
+![Screenshot 2026-09-17 115335.png](../../Pictures/Screenshot%202026-09-17%20115335.png)
 
 ### Observability
-
-```text
-TODO — Add screenshot showing:
 LangSmith workflow trace
-```
-
+![Screenshot 2026-09-17 115457.png](../../Pictures/Screenshot%202026-09-17%20115457.png)
 ---
 
 # Local Setup
@@ -1102,4 +1085,3 @@ It provides **AI-assisted contract analysis and suggestions** and should not be 
 
 ---
 
-⭐ **If you're reviewing this project as an AI engineering portfolio piece, the most important sections are the architecture, evaluation evidence, security testing, observability, and engineering fixes—not just the feature list.**
