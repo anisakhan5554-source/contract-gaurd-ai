@@ -19,6 +19,12 @@ from jose import JWTError
 import logging
 import json
 from retrieval import hybrid_search_clauses
+from pydantic import BaseModel, EmailStr
+
+class SignupRequest(BaseModel):
+    email: EmailStr
+    password: str
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("contractguard")
@@ -119,7 +125,7 @@ def upload_contract(file: UploadFile = File(...), db: Session = Depends(get_db),
 def list_contracts(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contracts = db.query(Contract).filter(Contract.owner_id == current_user.id).all()
     return [
-        {"id": str(c.id), "filename": c.filename, "status": c.status, "created_at": c.created_at}
+        {"id": str(c.id), "filename": c.filename, "status": c.status, "created_at": c.created_at, "version": c.version}
         for c in contracts
     ]
 
@@ -160,6 +166,25 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_u
     contract = db.query(Contract).filter(Contract.id == contract_id).first()
     if not contract:
         raise HTTPException(404, "Contract not found")
+
+    if contract.status == "analyzed":
+        existing_clauses = db.query(Clause).filter(Clause.contract_id == contract.id).all()
+        existing_results = []
+        for clause in existing_clauses:
+            ra = db.query(RiskAssessment).filter(RiskAssessment.clause_id == clause.id).first()
+            if ra:
+                existing_results.append({
+                    "clause_id": str(clause.id),
+                    "risk_level": {0.25: "low", 0.5: "medium", 0.75: "high", 1.0: "critical"}.get(ra.risk_score, "unknown"),
+                    "confidence": ra.confidence,
+                    "reviewed_by_human": ra.reviewed_by_human,
+                })
+        return {
+            "contract_id": str(contract.id),
+            "clauses_analyzed": len(existing_results),
+            "results": existing_results,
+            "message": "Contract already analyzed. Returning existing results.",
+        }
 
     file_path = None
     for filename in os.listdir(UPLOAD_DIR):
@@ -221,15 +246,6 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_u
                 db.add(redline_record)
                 db.commit()
 
-            log = AuditLog(
-                actor="risk_agent",
-                action="analyzed_clause",
-                entity_type="clause",
-                entity_id=clause.id,
-                details=f"risk={assessment.risk_level.value}, reviewed_by_human={guardrail_result['reviewed_by_human']}",
-            )
-            db.add(log)
-            db.commit()
             log_event("clause_analyzed", clause_id=str(clause.id), risk_level=assessment.risk_level.value,
                       confidence=assessment.confidence)
 
@@ -245,12 +261,10 @@ def analyze_contract(contract_id: UUID, db: Session = Depends(get_db), current_u
                 "error": str(e)
             })
 
-    contract.status = "analyzed"
+    contract.status = "analyzed" if all("error" not in r for r in results) else "partial_failure"
     db.commit()
 
     return {"contract_id": str(contract.id), "clauses_analyzed": len(results), "results": results}
-
-
 @app.get("/contracts/{contract_id}/history")
 def get_contract_history(contract_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contract = db.query(Contract).filter(Contract.id == contract_id).first()
@@ -373,7 +387,13 @@ def compare_versions(v2_contract_id: UUID, db: Session = Depends(get_db), curren
 
 
 @app.post("/signup")
-def signup(email: str, password: str, db: Session = Depends(get_db)):
+def signup(payload: SignupRequest, db: Session = Depends(get_db)):
+    email = payload.email.strip().lower()
+    password = payload.password
+
+    if not password or not password.strip():
+        raise HTTPException(400, "Password is required")
+
     existing = db.query(User).filter(User.email == email).first()
     if existing:
         raise HTTPException(400, "Email already registered")

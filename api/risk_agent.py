@@ -6,12 +6,13 @@ from pydantic import ValidationError
 from schemas import RiskAssessmentOutput
 from retrieval import hybrid_search_clauses
 from database import SessionLocal
-from models import RiskAssessment
+from models import RiskAssessment, AuditLog
 from schemas import RedlineOutput
 
 
-
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+MODEL_VERSION = "models/gemini-3.6-flash"
+PROMPT_VERSION = "risk_prompt_v1"
 _client = None
 
 def get_client():
@@ -60,14 +61,14 @@ def analyze_clause_risk(clause_text: str, max_retries: int = 3) -> RiskAssessmen
     for attempt in range(max_retries + 1):
         try:
             response = get_client().models.generate_content(
-                model="models/gemini-3.6-flash",
+                model=MODEL_VERSION,
                 contents=prompt
             )
             if hasattr(response, 'usage_metadata') and response.usage_metadata:
                 print(f"[COST] Tokens used: {response.usage_metadata}")
             raw_text = response.text.strip()
 
-            if raw_text.startswith("```"):
+            if raw_text.startswith(""):
                 raw_text = raw_text.strip("`")
                 if raw_text.startswith("json"):
                     raw_text = raw_text[4:]
@@ -150,12 +151,12 @@ def generate_redline(clause_text: str, risk_level: str, risk_explanation: str, r
     for attempt in range(max_retries + 1):
         try:
             response = get_client().models.generate_content(
-                model="models/gemini-3.6-flash",
+                model=MODEL_VERSION,
                 contents=prompt
             )
             raw_text = response.text.strip()
 
-            if raw_text.startswith("```"):
+            if raw_text.startswith(""):
                 raw_text = raw_text.strip("`")
                 if raw_text.startswith("json"):
                     raw_text = raw_text[4:]
@@ -178,6 +179,7 @@ def generate_redline(clause_text: str, risk_level: str, risk_explanation: str, r
 
     raise ValueError(f"Failed to generate valid redline after {max_retries + 1} attempts. Last error: {last_error}")
 
+
 def check_redline_scope(original: str, rewrite: str, max_length_ratio: float = 2.0) -> dict:
     issues = []
 
@@ -198,8 +200,6 @@ def check_redline_scope(original: str, rewrite: str, max_length_ratio: float = 2
     }
 
 
-
-
 def save_risk_assessment(clause_id, assessment: RiskAssessmentOutput, guardrail_result: dict, db=None):
     close_db = False
     if db is None:
@@ -216,6 +216,22 @@ def save_risk_assessment(clause_id, assessment: RiskAssessmentOutput, guardrail_
     db.add(record)
     db.commit()
     db.refresh(record)
+
+    audit_entry = AuditLog(
+        actor="system",
+        action="clause_risk_assessed",
+        entity_type="clause",
+        entity_id=clause_id,
+        details=json.dumps({
+            "model_version": MODEL_VERSION,
+            "prompt_version": PROMPT_VERSION,
+            "risk_level": assessment.risk_level.value,
+            "confidence": assessment.confidence,
+            "reviewed_by_human": guardrail_result["reviewed_by_human"],
+        }),
+    )
+    db.add(audit_entry)
+    db.commit()
 
     if close_db:
         db.close()

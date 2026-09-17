@@ -23,7 +23,7 @@ def run_red_team():
     caught = 0
     for payload in ATTACK_PAYLOADS:
         result = detect_prompt_injection(payload)
-        status = "BLOCKED ✅" if result["injection_detected"] else "MISSED ❌"
+        status = "BLOCKED " if result["injection_detected"] else "MISSED ❌"
         if result["injection_detected"]:
             caught += 1
         print(f"{status} | {payload[:60]}")
@@ -46,7 +46,7 @@ def test_authorization_attack():
     print("\n=== AUTHORIZATION ATTACK TEST ===\n")
     r = requests.get("http://localhost:8000/contracts")
     if r.status_code == 401:
-        print("BLOCKED ✅ | Unauthenticated access correctly rejected")
+        print("BLOCKED  | Unauthenticated access correctly rejected")
     else:
         print("FAILED ❌ | Unauthenticated access was allowed!")
 
@@ -55,7 +55,7 @@ def test_jwt_tampering():
     fake_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.fake.tampered"
     r = requests.get("http://localhost:8000/contracts", headers={"Authorization": f"Bearer {fake_token}"})
     if r.status_code == 401:
-        print("BLOCKED ✅ | Tampered token correctly rejected")
+        print("BLOCKED  | Tampered token correctly rejected")
     else:
         print("FAILED ❌ | Tampered token was accepted!")
 
@@ -66,7 +66,7 @@ def test_malicious_file_upload():
     files = {"file": ("malware.exe", fake_exe)}
     r = requests.post("http://localhost:8000/contracts/upload", files=files)
     if r.status_code in (400, 401):
-        print("BLOCKED ✅ | Malicious/wrong file type rejected")
+        print("BLOCKED  | Malicious/wrong file type rejected")
     else:
         print("FAILED ❌ | Malicious file was accepted!")
 
@@ -76,7 +76,7 @@ def test_oversized_file_attack():
     files = {"file": ("huge.txt", huge_content)}
     r = requests.post("http://localhost:8000/contracts/upload", files=files)
     if r.status_code in (400, 401):
-        print("BLOCKED ✅ | Oversized file rejected")
+        print("BLOCKED  | Oversized file rejected")
     else:
         print("FAILED ❌ | Oversized file was accepted!")
 
@@ -87,10 +87,10 @@ def test_output_manipulation():
     try:
         result = analyze_clause_risk(malicious_clause)
         if result.risk_level.value in ("low", "medium", "high", "critical") and 0 <= result.confidence <= 1:
-            print("VALIDATED ✅ | Output still conforms to schema despite manipulation attempt")
+            print("VALIDATED  | Output still conforms to schema despite manipulation attempt")
         print(f"   Actual result: risk={result.risk_level.value}, confidence={result.confidence}")
     except Exception as e:
-        print(f"BLOCKED ✅ | Malformed output rejected: {str(e)[:80]}")
+        print(f"BLOCKED | Malformed output rejected: {str(e)[:80]}")
 
 def test_cross_contract_leakage():
     print("\n=== CROSS-CONTRACT LEAKAGE TEST ===\n")
@@ -123,7 +123,7 @@ def test_pii_redaction():
     sample = "Contact john@email.com or 555-123-4567, SSN 123-45-6789"
     redacted = redact_pii(sample)
     if "@" not in redacted and "123-45-6789" not in redacted:
-        print(f"REDACTED ✅ | Result: {redacted}")
+        print(f"REDACTED  | Result: {redacted}")
     else:
         print(f"FAILED ❌ | PII still present: {redacted}")
 
