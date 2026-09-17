@@ -12,7 +12,12 @@ def get_engine():
     if _engine is None:
         if not DATABASE_URL:
             raise RuntimeError("DATABASE_URL is not set")
-        _engine = create_engine(DATABASE_URL)
+        url = DATABASE_URL
+        if url.startswith("postgresql://"):
+            url = url.replace("postgresql://", "postgresql+psycopg://", 1)
+        elif url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql+psycopg://", 1)
+        _engine = create_engine(url)
     return _engine
 
 def SessionLocal():
