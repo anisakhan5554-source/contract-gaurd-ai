@@ -3,5 +3,17 @@
   {"text": "This agreement shall commence on the effective date and continue for one year.", "expected_risk": "low"},
   {"text": "Employee shall receive an annual salary of $75,000, plus an uncapped discretionary bonus with no clawback provision.", "expected_risk": "high"},
   {"text": "Either party may terminate this agreement with 30 days written notice.", "expected_risk": "low"},
-  {"text": "Executive's employment may be terminated by Forge for cause at any time.", "expected_risk": "medium"}
+  {"text": "Executive's employment may be terminated by Forge for cause at any time.", "expected_risk": "medium"},
+  {"text": "Company shall indemnify and hold harmless Client against any and all claims, damages, losses, and liabilities of any kind whatsoever, without any cap, limitation, exclusion, or time restriction, including claims arising from Client's own gross negligence, willful misconduct, or fraud.", "expected_risk": "critical"},
+  {"text": "Recipient agrees to maintain the confidentiality of all Confidential Information disclosed under this Agreement for a period of three years following termination.", "expected_risk": "low"},
+  {"text": "Recipient shall have no obligation to maintain confidentiality of any information received under this Agreement, and may disclose such information to any third party at its sole discretion.", "expected_risk": "critical"},
+  {"text": "Client shall pay all invoices within 45 days of receipt. Late payments shall accrue interest at 1.5% per month.", "expected_risk": "medium"},
+  {"text": "Client shall pay all invoices within 15 days of receipt. Failure to pay within this period shall constitute immediate default, entitling Company to terminate all services without notice and pursue full contract value plus attorney's fees.", "expected_risk": "high"},
+  {"text": "All intellectual property created by Contractor during the course of this engagement shall remain the sole property of Contractor, with Client granted no license to use, reproduce, or modify such IP.", "expected_risk": "high"},
+  {"text": "All intellectual property created by Contractor during the engagement shall be assigned to Client upon full payment, with Contractor retaining rights only to pre-existing background IP.", "expected_risk": "low"},
+  {"text": "Company's total liability under this Agreement shall not exceed the total fees paid by Client in the twelve months preceding the claim.", "expected_risk": "low"},
+  {"text": "Neither party's liability under this Agreement shall be subject to any cap, and both parties waive any statutory limitations on consequential or punitive damages.", "expected_risk": "high"},
+  {"text": "This Agreement automatically renews for successive one-year terms unless either party provides written notice of non-renewal at least 90 days prior to the end of the then-current term.", "expected_risk": "medium"},
+  {"text": "Company may terminate this Agreement immediately, without cause and without notice, at its sole discretion, and Client waives any right to compensation or notice period upon such termination.", "expected_risk": "high"},
+  {"text": "Employee agrees not to compete with Company within a 5-mile radius of Company's office for a period of 6 months following termination.", "expected_risk": "low"}
 ]

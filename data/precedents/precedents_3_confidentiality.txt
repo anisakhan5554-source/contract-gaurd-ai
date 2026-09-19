@@ -192,7 +192,7 @@ No amendment, modification, waiver, termination or discharge of any provision of
 
 B.Applicable Law
 
-This Agreement shall in all respects, including all matters of construction, validity and performance, be governed by, and construed and enforced in accordance with, the laws of the State of New Jersey, without regard to any rules governing conflicts of laws.
+This Agreement shall in all respects, including all matters of construction, validity and performance, be governed by, and construed and enforced in accordance with, the laws , without regard to any rules governing conflicts of laws.
 
 C.Entire Agreement
 
@@ -398,4 +398,4 @@ By:
 Name: Steven J. Tsimbinos
 Title: Executive Vice President and General Counsel
 
-15
+

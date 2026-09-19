@@ -33,5 +33,15 @@ services:
       timeout: 10s
       retries: 3
 
+  frontend:
+    build: ./frontend
+    container_name: cra-frontend
+    environment:
+      API_BASE: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
 volumes:
   pgdata:

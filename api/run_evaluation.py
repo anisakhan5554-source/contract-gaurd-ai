@@ -9,7 +9,7 @@ from retrieval import hybrid_search_clauses
 RISK_RANK = {"low": 1, "medium": 2, "high": 3, "critical": 4}
 
 def load_labeled_data():
-    path = os.path.join("..", "data", "evaluation", "labeled_clauses.json")
+    path = os.path.join( "data", "evaluation", "labeled_clauses.json")
     with open(path, "r") as f:
         return json.load(f)
 

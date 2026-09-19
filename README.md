@@ -1,1087 +1,1160 @@
-# Contract Risk Analyzer
+# ContractGuard AI
 
-### Agentic Contract Intelligence for Risk Detection, Precedent Retrieval, Version Regression & Controlled Redlining
+### Agentic Contract Intelligence for Risk Detection, Evidence Retrieval, Version Regression & Controlled Redlining
 
-> **AI-assisted contract intelligence for identifying contractual risk, retrieving supporting precedent, detecting version regressions, and generating controlled redline suggestions — with guardrails, human oversight, auditability, and reproducible AI execution.**
+ContractGuard AI is a production-minded AI system for analyzing contracts at the **clause level**, retrieving supporting precedent, assessing risk, detecting risk regressions between contract versions, and generating controlled redline suggestions for human review.
 
----
+The project is deliberately designed as more than an LLM wrapper or basic RAG chatbot.
 
-## Overview
+It combines:
 
-**Contract Risk Analyzer** is an enterprise-oriented Agentic AI system designed to help teams analyze contracts more systematically and transparently.
+* Agentic AI with **LangGraph**
+* Hybrid RAG using **dense + keyword retrieval**
+* Clause-level risk intelligence
+* Structured LLM outputs with **Pydantic validation**
+* Contract version comparison and regression detection
+* Controlled redline generation
+* AI-specific security guardrails
+* JWT authentication and contract-level authorization
+* Human-in-the-loop review
+* Audit logging and reproducibility
+* LangSmith runtime observability
+* Automated evaluation and security testing
+* Dockerized deployment and CI validation
 
-Instead of treating an LLM as an isolated chatbot, the system combines:
-
-* **Agentic orchestration with LangGraph**
-* **Hybrid RAG using dense vector + keyword retrieval**
-* **Structured risk analysis with Pydantic**
-* **Contract version comparison and risk regression detection**
-* **AI-generated redline suggestions**
-* **Human-in-the-loop review**
-* **Prompt-injection and input-security guardrails**
-* **JWT authentication and ownership isolation**
-* **Audit logging and reproducibility tracking**
-* **LangSmith observability**
-* **Automated evaluation and red-team security testing**
-* **Dockerized deployment and CI validation**
-
-The core design principle is:
-
-> **AI should assist high-stakes contract decisions with evidence, controls, traceability, and human oversight — not operate as an unchecked black box.**
-
-This project is intended as an **AI engineering / enterprise AI system**, not as legal advice or a replacement for qualified legal professionals.
+> **Core engineering principle:**
+> **The LLM is a component of the system — not the system itself.**
 
 ---
 
-# At a Glance
+# Executive Summary
 
-| Capability                 | Evidence                                                                 |
-| -------------------------- | ------------------------------------------------------------------------ |
-| Agentic orchestration      | LangGraph StateGraph with retrieval → scoring → guardrail → redline flow |
-| Hybrid RAG                 | Dense vector retrieval + keyword/BM25-style retrieval                    |
-| Precedent corpus           | **419 precedent clauses** across 4 contract niches                       |
-| Structured AI output       | Gemini + Pydantic validation                                             |
-| Version intelligence       | Clause-level diff + risk regression detection                            |
-| Redlining                  | AI-generated controlled rewrite suggestions                              |
-| Human oversight            | Human review / HITL workflow                                             |
-| Guardrails                 | **5 guardrail categories**                                               |
-| Guardrail tests            | **9/9 pytest tests passing**                                             |
-| Prompt-injection defense   | **5/5 tested injection attempts blocked**                                |
-| Evaluation set             | **17 labeled examples** in expanded evaluation                           |
-| Expanded measured accuracy | **52.94%**                                                               |
-| False negatives            | **0 observed in the evaluated set**                                      |
-| Observability              | LangSmith traces + structured JSON logs                                  |
-| Reproducibility            | Model/prompt version recorded per assessment                             |
-| Authentication             | JWT + user ownership isolation                                           |
-| Security testing           | **9 red-team security scenarios**                                        |
-| Dependency audit           | `pip-audit` surfaced **36 CVEs**; critical issue addressed               |
-| Containerization           | Docker + Docker Compose                                                  |
-| Docker registry            | **Docker Hub image published**                                           |
-| CI/CD                      | Docker build + AI evaluation gate                                        |
+ContractGuard AI addresses a practical enterprise problem:
 
----
+> **How can AI assist with contract review while keeping evidence, security, validation, human oversight, and system behavior under engineering control?**
 
-# Why This Project Exists
+The system processes a contract through a controlled pipeline:
 
-Contract review contains several recurring engineering problems:
+```text
+Contract Upload
+      │
+      ▼
+Input Validation
+      │
+      ▼
+Document Ingestion
+      │
+      ▼
+Clause Extraction
+      │
+      ▼
+Hybrid Retrieval
+(Dense + Keyword)
+      │
+      ▼
+LangGraph Workflow
+      │
+      ├── Retrieve Precedent
+      ├── Score Risk
+      ├── Check Guardrails
+      └── Generate Redline
+      │
+      ▼
+Human Review
+      │
+      ▼
+Persistence + Audit
+      │
+      ▼
+Observability + Evaluation
+```
 
-1. Important clauses can be buried inside long documents.
-2. Risk assessment often depends on contractual context and precedent.
-3. Contract revisions can introduce subtle risk regressions.
-4. LLM outputs can be inconsistent or insufficiently grounded.
-5. Sensitive contract data requires authentication and isolation.
-6. High-impact AI decisions require human oversight.
-7. AI systems need observability and reproducibility, not just generated text.
+The objective is not to replace legal professionals.
 
-This project addresses these problems as an **AI engineering system** rather than simply adding an LLM to a document-upload application.
+The objective is to provide a **controlled AI-assisted first-pass analysis system** where recommendations are evidence-backed, structured, reviewable, traceable, and measurable.
 
 ---
 
 # System Architecture
 
 ```text
-                         ┌──────────────────────┐
-                         │      Streamlit UI    │
-                         │ Login / Review /     │
-                         │ Compare / Audit      │
-                         └──────────┬───────────┘
+                         ┌─────────────────────┐
+                         │   Streamlit UI      │
+                         └──────────┬──────────┘
                                     │
                                     ▼
-                         ┌──────────────────────┐
-                         │      FastAPI API     │
-                         │ Auth / Contracts /   │
-                         │ Analysis / HITL       │
-                         └──────────┬───────────┘
+                         ┌─────────────────────┐
+                         │      FastAPI        │
+                         │ Auth / API / AuthZ  │
+                         └──────────┬──────────┘
                                     │
                                     ▼
-                    ┌──────────────────────────────┐
-                    │       LangGraph Workflow     │
-                    │                              │
-                    │ Retrieve → Score → Guardrail │
-                    │              ↓               │
-                    │           Redline            │
-                    └──────────────┬───────────────┘
+                    ┌─────────────────────────────┐
+                    │       LangGraph Agent       │
+                    │                             │
+                    │  ┌──────────┐               │
+                    │  │ Retrieve │               │
+                    │  └────┬─────┘               │
+                    │       ▼                     │
+                    │  ┌────────────┐             │
+                    │  │ Score Risk │             │
+                    │  └─────┬──────┘             │
+                    │        ▼                    │
+                    │  ┌───────────────┐          │
+                    │  │  Guardrails   │          │
+                    │  └───────┬───────┘          │
+                    │          ▼                  │
+                    │  ┌───────────────┐          │
+                    │  │ Generate      │          │
+                    │  │ Redline       │          │
+                    │  └───────────────┘          │
+                    └──────────────┬──────────────┘
                                    │
-             ┌─────────────────────┼─────────────────────┐
-             ▼                     ▼                     ▼
-      ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
-      │ Hybrid RAG   │      │ Risk Agent   │      │ Redline Agent│
-      │ Vector +     │      │ Gemini +     │      │ Controlled   │
-      │ Keyword      │      │ Pydantic     │      │ Rewrite      │
-      └──────┬───────┘      └──────┬───────┘      └──────────────┘
-             │                     │
-             ▼                     ▼
-      ┌─────────────────────────────────────┐
-      │ PostgreSQL + pgvector               │
-      │ Contracts / Clauses / Precedents /  │
-      │ Risks / Redlines / Audit Logs / Users│
-      └─────────────────────────────────────┘
+             ┌─────────────────────┼──────────────────────┐
+             ▼                     ▼                      ▼
+     ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+     │ PostgreSQL   │      │ Gemini +     │      │  LangSmith   │
+     │ + pgvector   │      │ Pydantic     │      │ Observability│
+     └──────────────┘      └──────────────┘      └──────────────┘
+             │
+             ▼
+     Contracts / Clauses
+     Risk Assessments
+     Redlines / Reviews
+     Audit Events
+```
 
-             ┌─────────────────────────────┐
-             │ Security & Control Layer   │
-             │                             │
-             │ Input Validation            │
-             │ Prompt Injection Detection  │
-             │ Confidence Guardrails        │
-             │ Risk-Level Guardrails        │
-             │ Scope Guardrails             │
-             │ JWT / Ownership Isolation   │
-             │ Human Review                 │
-             └─────────────────────────────┘
+### Architectural control flow
 
-                    ┌─────────────────┐
-                    │   Observability │
-                    │   LangSmith     │
-                    │   JSON Logs     │
-                    │   Cost / Tokens │
-                    └─────────────────┘
+```text
+Untrusted Input
+      ↓
+Validation
+      ↓
+Retrieval
+      ↓
+LLM Reasoning
+      ↓
+Structured Output
+      ↓
+Validation
+      ↓
+Security Controls
+      ↓
+Business Logic
+      ↓
+Human Review
+      ↓
+Persistence
+      ↓
+Auditability
+      ↓
+Observability
+```
+
+This separation is intentional: model output does not directly become trusted application state.
+
+---
+
+# Why This Project?
+
+A basic RAG application can answer questions over documents.
+
+Contract analysis requires considerably more system behavior.
+
+The system needs to answer questions such as:
+
+* What clauses are present?
+* Which clauses are potentially risky?
+* What evidence supports that assessment?
+* What changed between contract versions?
+* Did a change introduce a potential risk regression?
+* Should a redline be proposed?
+* Should the result require human review?
+* Can the system prevent malicious instructions embedded in documents?
+* Can one user access another user's contract?
+* Can an engineer trace how an analysis was produced?
+* Can the system measure where its AI decisions are failing?
+
+That shifts the engineering problem from:
+
+```text
+Document → LLM → Answer
+```
+
+to:
+
+```text
+Secure Application
+        +
+Retrieval
+        +
+Agent Orchestration
+        +
+Structured AI
+        +
+Validation
+        +
+Business Logic
+        +
+Human Oversight
+        +
+Auditability
+        +
+Observability
+        +
+Evaluation
 ```
 
 ---
 
-# Core AI Workflow
+# Agentic Workflow
 
-The system uses an actual **LangGraph StateGraph**, rather than a single sequential LLM call.
+ContractGuard uses LangGraph to explicitly model the analysis workflow.
 
 ```text
 Contract
    │
    ▼
-Document Ingestion
-   │
-   ▼
-Clause Extraction
-   │
-   ▼
-Hybrid Precedent Retrieval
-   │
-   ▼
-Risk Analysis Agent
-   │
-   ▼
-Structured Validation
-   │
-   ▼
-Guardrail Checks
-   │
-   ├──────────► Escalate / Human Review
-   │
-   ▼
-Redline Agent
-   │
-   ▼
-Persist Results
-   │
-   ▼
-Audit + Observability
+┌──────────┐
+│ Retrieve │
+└────┬─────┘
+     ▼
+┌────────────┐
+│ Score Risk │
+└─────┬──────┘
+      ▼
+┌───────────────┐
+│ Check         │
+│ Guardrails    │
+└───────┬───────┘
+        ▼
+┌─────────────────┐
+│ Generate        │
+│ Controlled      │
+│ Redline         │
+└────────┬────────┘
+         ▼
+   Human Review
 ```
 
-This separation allows individual stages to be tested, observed, and controlled independently.
+### `retrieve`
+
+Retrieves relevant precedent clauses using hybrid retrieval.
+
+### `score_risk`
+
+Uses the LLM to produce structured clause-level risk assessments.
+
+### `check_guardrails`
+
+Validates AI output and applies security and confidence controls before downstream actions.
+
+### `generate_redline`
+
+Produces controlled revision suggestions where applicable rather than allowing unrestricted document rewriting.
+
+### Human Review
+
+The AI recommendation is persisted as a recommendation requiring review rather than silently becoming an authoritative decision.
+
+> **The AI proposes. The reviewer decides.**
 
 ---
 
-# 1. Contract Intelligence
+# Hybrid RAG
 
-The ingestion pipeline accepts contract documents and extracts individual clauses for downstream analysis.
+ContractGuard does not rely exclusively on semantic similarity.
 
-### Capabilities
-
-* Contract upload
-* File validation
-* Document processing
-* Clause extraction
-* Clause persistence
-* Contract/version tracking
-* Protection against invalid or malicious input files
-
-A previous clause-extraction issue caused valid clauses to be filtered too aggressively. The filtering logic was corrected and subsequently verified against real contract documents.
-
----
-
-# 2. Hybrid RAG / Precedent Engine
-
-The system does not rely exclusively on semantic similarity.
-
-It combines:
+The retrieval layer combines:
 
 ```text
-                 Contract Clause
-                       │
-             ┌─────────┴─────────┐
-             ▼                   ▼
-      Dense Retrieval      Keyword Retrieval
-        pgvector             BM25-style
-             │                   │
-             └─────────┬─────────┘
-                       ▼
-                Hybrid Results
-                       │
-                       ▼
-              Relevant Precedents
+Dense Vector Retrieval
+          +
+Keyword / BM25-style Retrieval
+          ↓
+     Hybrid Ranking
+          ↓
+Relevant Precedent
+          ↓
+Risk Analysis
 ```
 
-### Precedent Corpus
-
-The current corpus contains **419 precedent clauses** across four practical contract niches:
+The precedent library currently contains **419 clause examples** across areas including:
 
 * Employment
-* Master Services / Commercial Agreements
+* Commercial / MSA
 * Confidentiality
-* Settlement / Litigation
+* Settlement and litigation-related agreements
 
-The corpus includes clauses derived from real contractual documents, including public SEC/EDGAR filings.
+The purpose of retrieval is not simply to place more text into the model context.
 
-### Why Hybrid Retrieval?
+It provides **inspectable supporting evidence** for the risk assessment.
 
-Dense retrieval is useful for semantic similarity, while keyword-based retrieval can preserve important contractual terminology and exact concepts.
-
-Combining both approaches provides a stronger evidence-retrieval layer than relying on one retrieval method alone.
-
----
-
-# 3. Risk Analysis Agent
-
-The risk analysis layer uses an LLM with structured output validation.
-
-### Flow
+This makes the reasoning process easier to review:
 
 ```text
-Clause
-  │
-  ▼
-Relevant Precedents
-  │
-  ▼
-LLM Risk Analysis
-  │
-  ▼
-Pydantic Structured Output
-  │
-  ▼
-Confidence / Risk Guardrails
-  │
-  ▼
-Persisted Assessment
+Contract Clause
+      ↓
+Retrieved Evidence
+      ↓
+Risk Assessment
+      ↓
+Reasoning
+      ↓
+Confidence
 ```
 
-The system evaluates contractual clauses and produces structured assessments rather than relying on free-form text alone.
+---
 
-The implementation includes:
+# Clause-Level Risk Intelligence
 
-* Structured response validation
-* Retry handling
-* Confidence tracking
-* Risk-level validation
-* Evidence-aware analysis
-* Persistence of assessment results
+Risk is evaluated at the clause level rather than treating the entire contract as one document.
+
+Each assessment can capture:
+
+| Field             | Purpose                       |
+| ----------------- | ----------------------------- |
+| Risk Level        | Categorizes assessed risk     |
+| Reasoning         | Explains the assessment       |
+| Confidence        | Indicates model confidence    |
+| Precedent         | Supporting retrieved evidence |
+| Review Status     | Tracks human review           |
+| Contract / Clause | Maintains traceability        |
+
+LLM output follows a controlled path:
+
+```text
+Gemini
+   ↓
+Structured Output
+   ↓
+Pydantic Validation
+   ↓
+Application Logic
+   ↓
+Database
+```
+
+This reduces dependence on fragile free-form model responses.
 
 ---
 
-# 4. Evaluation Results
-
-Evaluation is treated as an engineering requirement rather than an afterthought.
-
-## Expanded Evaluation
-
-The later evaluation used a labeled set of **17 examples**.
-
-| Metric                   | Measured Result |
-| ------------------------ | --------------: |
-| Accuracy                 |      **52.94%** |
-| Hallucination rate       |       **5.88%** |
-| Escalation rate          |      **47.06%** |
-| Groundedness             |      **94.12%** |
-| Observed false negatives |           **0** |
-
-The evaluation showed a consistent calibration pattern: incorrect predictions tended to be **one risk level higher than the labeled result**, rather than under-flagging the clause.
-
-### Important Limitation
-
-This is a **small evaluation set** and should not be interpreted as production-level accuracy.
-
-Additional repeated calibration experiments were constrained by the Gemini free-tier request quota. The quota limitation is treated as an experimentation constraint; it is **not** presented as an explanation for the measured 52.94% result.
-
-The evaluation framework is designed so that a larger labeled dataset can be introduced as the system matures.
-
----
-
-# 5. Version Intelligence
+# Version Intelligence & Risk Regression
 
 Contracts evolve.
 
-A clause that was previously acceptable may become materially riskier after a revision.
+A useful contract intelligence system therefore needs to understand not only:
 
-The system therefore supports:
+> “What is risky?”
 
-* Contract version detection
-* Clause-level comparison
-* Modified clause identification
-* Risk regression detection
-* Version-to-version review
+but also:
 
-### Example
+> **“What changed, and did the change increase the assessed risk?”**
+
+ContractGuard compares contract versions at the clause level.
 
 ```text
 Version 1
-Compensation: $70,000
-Risk: Medium
-
-        ↓ Contract Revision
-
+   │
+   ▼
+Clause Matching
+   │
+   ▼
 Version 2
-Compensation: $75,000
-Risk: High
-
-        ↓
-
-Risk Regression Detected
+   │
+   ▼
+Similarity Analysis
+   │
+   ├── Unchanged
+   ├── Modified
+   └── Potentially New / Removed
+          │
+          ▼
+     Risk Comparison
+          │
+          ▼
+   Regression Detection
 ```
 
-The implementation uses clause-level comparison logic and has been verified through live API and UI testing.
+The comparison layer uses similarity-based clause matching to identify meaningful changes.
+
+This supports detection of:
+
+* unchanged clauses
+* modified clauses
+* changed risk levels
+* potential risk regressions
+
+The goal is to make version review more targeted rather than forcing a reviewer to manually compare every clause.
 
 ---
 
-# 6. Redline Agent
+# Controlled Redlining
 
-For clauses requiring intervention, the system can generate a suggested rewrite.
+Redline generation is intentionally downstream of risk analysis and guardrails.
 
 ```text
-High-Risk Clause
-      │
-      ▼
-Risk Analysis
-      │
-      ▼
-Evidence / Precedent
-      │
-      ▼
-Redline Agent
-      │
-      ▼
+Risk Detection
+      ↓
+Supporting Evidence
+      ↓
 Suggested Revision
-      │
-      ▼
+      ↓
+Validation
+      ↓
+Human Review
+      ↓
+Decision
+```
+
+The system does not treat generated text as an automatic legal action.
+
+This creates a clear boundary between:
+
+**AI-generated recommendation**
+
+and
+
+**human-approved decision.**
+
+---
+
+# Security & AI Guardrails
+
+Contract documents are treated as **untrusted input**.
+
+A document can contain text that attempts to manipulate the model, including instructions embedded inside otherwise legitimate contract content.
+
+ContractGuard therefore considers both traditional application security and AI-specific threats.
+
+### Threat categories
+
+* Prompt injection
+* Malicious embedded instructions
+* Unexpected document content
+* Oversized files
+* Manipulated model-facing text
+* Invalid model output
+* Unauthorized contract access
+* Cross-contract data exposure
+* PII exposure
+* Dependency vulnerabilities
+
+### Guardrail layers
+
+```text
+File Validation
+      ↓
+Prompt Injection Detection
+      ↓
+LLM Analysis
+      ↓
+Output Validation
+      ↓
+Confidence / Scope Controls
+      ↓
+Business Logic
+      ↓
 Human Review
 ```
 
-The redline workflow is deliberately designed as a **suggestion mechanism**, not an autonomous legal decision-maker.
+The design principle is simple:
 
-A persistence issue where generated redlines were not being saved was identified and fixed. Redline records are now persisted and verified.
-
----
-
-# 7. Guardrails & AI Safety
-
-High-impact AI workflows require controls around model output.
-
-The system implements five guardrail categories:
-
-### 1. Confidence Guardrail
-
-Low-confidence assessments can be routed toward additional review rather than being treated as definitive.
-
-### 2. Risk-Level Guardrail
-
-Risk outputs are validated against expected constraints.
-
-### 3. Scope Guardrail
-
-The model is constrained to the intended contract-analysis task.
-
-### 4. Input Validation
-
-Uploaded files are validated before entering the analysis pipeline.
-
-### 5. Prompt-Injection Detection
-
-The system checks document input for malicious instructions attempting to manipulate the AI workflow.
-
-### Tested Result
-
-**9/9 guardrail tests passed.**
-
-Prompt-injection testing included **5/5 tested attacks being blocked**.
+> **Never assume that either user-provided documents or LLM output are inherently trustworthy.**
 
 ---
 
-# 8. Human-in-the-Loop
+# Security Testing
 
-The system supports explicit human review for AI-generated assessments and recommendations.
+Security was tested as part of the application rather than treated as a documentation checkbox.
+
+Current testing evidence includes:
+
+| Security Area            |                      Result |
+| ------------------------ | --------------------------: |
+| Guardrail tests          |           **9 / 9 passing** |
+| Prompt-injection tests   |           **5 / 5 blocked** |
+| Red-team scenarios       |                **9 tested** |
+| User ownership isolation | **Verified with two users** |
+| Dependency auditing      |    **pip-audit integrated** |
+
+During development, dependency auditing identified **36 dependency vulnerabilities**. The critical issue identified during the audit was addressed, while dependency security remains an ongoing maintenance concern.
+
+The project does not claim that these tests prove complete security.
+
+They demonstrate that security controls were actively tested against defined failure scenarios.
+
+---
+
+# Authentication & Authorization
+
+JWT authentication protects API access.
+
+However, authentication alone is insufficient for a multi-user application.
+
+ContractGuard also enforces **resource-level ownership checks**.
+
+Example verification:
 
 ```text
-AI Assessment
-     │
-     ▼
-Guardrails
-     │
-     ├── Acceptable
-     │      │
-     │      ▼
-     │   Continue
-     │
-     └── Requires Review
-            │
-            ▼
-       Human Reviewer
-            │
-            ▼
-       Review Decision
+User A
+ ├── Contract A ✓
+ └── Contract B ✗
+
+User B
+ ├── Contract B ✓
+ └── Contract A ✗
 ```
 
-Human review is particularly important for high-risk contractual changes where an automated suggestion should not become an unverified business or legal decision.
+This prevents authenticated users from simply accessing resources belonging to another user.
 
 ---
 
-# 9. Authentication & Data Isolation
+# Human-in-the-Loop
 
-The API uses JWT-based authentication.
+Contract analysis is designed around human oversight.
 
-Security controls include:
+```text
+AI Analysis
+     ↓
+Evidence + Confidence
+     ↓
+Risk Recommendation
+     ↓
+Human Review
+     ↓
+Approved / Rejected / Reviewed
+```
 
-* User signup/login
-* JWT authentication
-* Protected API endpoints
-* Contract ownership checks
-* User-scoped contract access
-* Cross-user isolation
+Review status is persisted as part of the analysis lifecycle.
 
-A two-user isolation test was performed to verify that one user cannot access another user's contracts through the protected API.
-
-Input validation was also strengthened so invalid signup values such as blank credentials are rejected through schema validation.
-
----
-
-# 10. Security & Red-Team Testing
-
-Security testing was implemented as a dedicated engineering layer.
-
-### Tested Scenarios
-
-* Prompt injection
-* Authentication bypass
-* JWT tampering
-* Malicious files
-* Oversized files
-* Output manipulation
-* Cross-contract data leakage
-* PII detection/redaction
-* Authorization boundaries
-
-### Results
-
-**9 automated security scenarios were tested.**
-
-Prompt-injection testing blocked all five tested injection attempts.
-
-The cross-contract leakage test also served an important purpose: it exposed a real ownership-isolation issue during development, which was subsequently addressed.
-
-This is a key engineering principle of the project:
-
-> **Security tests are used to discover weaknesses, not merely to demonstrate that everything passes.**
+This makes human review an **architectural control**, not merely a UI feature.
 
 ---
 
-# 11. PII Protection
+# Auditability & Reproducibility
 
-The system includes PII detection and redaction capabilities as part of the security and human-review workflow.
+AI systems become difficult to debug when their decisions cannot be reconstructed.
 
-The goal is to reduce unnecessary exposure of sensitive information in logs, traces, and review contexts.
+ContractGuard records information such as:
 
-PII handling is treated as a security concern rather than only a UI feature.
-
----
-
-# 12. Observability
-
-The LangGraph workflow is integrated with **LangSmith** for tracing.
-
-Tracing provides visibility into:
-
-* Workflow execution
-* Individual graph nodes
-* Model calls
-* Latency
-* Token usage
-* Execution paths
-* Failures
-
-The project initially exposed an important observability problem: the graph was not actually being invoked in the expected execution path.
-
-That issue was identified and corrected, after which real LangSmith traces were verified.
-
----
-
-# 13. Reproducibility
-
-Each risk assessment records model and prompt version information.
-
-This enables future investigation of questions such as:
-
-> Why did the AI produce a different assessment after a model or prompt change?
-
-The audit trail records relevant execution metadata rather than treating model output as an untraceable event.
-
----
-
-# 14. Audit Logging
-
-The system maintains audit information around important operations.
-
-Audit records support:
-
-* Contract analysis history
+* Contract association
+* Analysis events
+* Review events
 * Risk assessments
-* Human review
-* Model/prompt version information
-* Relevant execution metadata
+* Model version
+* Prompt version
+* Audit events
+* Review state
 
-This provides a foundation for investigating how an AI-assisted decision was produced.
-
----
-
-# 15. Reliability & Idempotency
-
-The system includes reliability hardening beyond the basic happy path.
-
-### Implemented
-
-* API health checks
-* PostgreSQL health checks
-* Retry logic
-* Structured model output validation
-* Docker health checks
-* Idempotency protection on contract analysis
-* CI evaluation gate
-* Failure-aware testing
-
-The `/analyze` workflow was specifically hardened against duplicate clause creation when the same contract is analyzed repeatedly.
-
----
-
-# 16. Docker & Deployment
-
-The application is containerized using Docker.
-
-### Docker Components
-
-* Docker
-* Docker Compose
-* PostgreSQL
-* API container
-* Health checks
-* Reproducible local environment
-
-A clean `docker compose up --build` workflow was verified from a fresh environment.
-
-## Docker Hub
-
-The application image is published to Docker Hub:
+Conceptually:
 
 ```text
-anisakhan4/contractguard-ai:latest
+Input
+  ↓
+Retrieval
+  ↓
+Model
+  ↓
+Validation
+  ↓
+Decision
+  ↓
+Audit Record
 ```
 
-Pull the published image with:
-
-```bash
-docker pull anisakhan4/contractguard-ai:latest
-```
-
-This provides a reproducible container artifact in addition to the source-code repository.
+The objective is to make important system actions traceable after execution.
 
 ---
 
-# 17. CI/CD
+# Observability with LangSmith
 
-The project includes CI validation for important engineering paths.
+LangSmith is used to inspect the actual runtime behavior of the LangGraph workflow.
 
-The CI workflow includes:
+This became particularly important during development.
+
+A key production-minded lesson from the project was:
+
+> **Architecture written in code does not guarantee architecture executed at runtime.**
+
+## Engineering Investigation: Finding an Orchestration Bug
+
+The `/analyze` endpoint was originally expected to execute:
 
 ```text
-Code Push
-   │
-   ├── Tests
-   │
-   ├── AI Evaluation Gate
-   │
-   └── Docker Build
+API
+ ↓
+LangGraph
+ ↓
+Retrieve
+ ↓
+Score Risk
+ ↓
+Guardrails
+ ↓
+Redline
 ```
 
-The goal is to prevent changes from being treated as complete simply because the application starts successfully.
+However, runtime investigation revealed that the API was directly calling the risk-scoring function:
 
-AI behavior and containerization are both included in the engineering validation process.
+```text
+API
+ ↓
+score_risk()
+```
+
+This meant the intended orchestration graph was being bypassed.
+
+The issue was discovered by inspecting LangSmith traces and noticing that the expected graph execution was missing.
+
+The endpoint was then corrected to invoke the LangGraph workflow:
+
+
+After the fix, the complete workflow appeared in LangSmith.
+
+### Why this matters
+
+This was not a theoretical architecture exercise.
+
+It was a real runtime discrepancy between:
+
+```text
+What the code was supposed to do
+```
+
+and
+
+```text
+What the application was actually doing
+```
+
+Observability made that discrepancy visible.
+
+### Observed node timings
+
+| LangGraph Node     | Observed Time |
+| ------------------ | ------------: |
+| `retrieve`         |        2.34 s |
+| `score_risk`       |       58.59 s |
+| `check_guardrails` |        0.50 s |
+| `generate_redline` |        0.36 s |
+
+The trace also exposed `score_risk` as the dominant latency contributor.
+
+That creates concrete optimization targets:
+
+* reduce prompt size
+* reduce retrieved context
+* optimize retrieval
+* cache reusable context
+* evaluate faster models
+* introduce asynchronous/background processing where appropriate
+
+This is one of the most useful engineering outcomes of the project because the system now provides evidence about **where it spends time**, rather than relying on assumptions.
 
 ---
 
-# Technology Stack
+# Evaluation
 
-| Layer               | Technology                                |
-| ------------------- | ----------------------------------------- |
-| Language            | Python 3.11                               |
-| API                 | FastAPI                                   |
-| Agent orchestration | LangGraph                                 |
-| LLM                 | Gemini                                    |
-| Structured output   | Pydantic                                  |
-| RAG                 | Hybrid dense + keyword retrieval          |
-| Vector search       | PostgreSQL + pgvector                     |
-| Database ORM        | SQLAlchemy                                |
-| Migrations          | Alembic                                   |
-| Authentication      | JWT                                       |
-| UI                  | Streamlit                                 |
-| Observability       | LangSmith                                 |
-| Testing             | Pytest                                    |
-| Security audit      | pip-audit                                 |
-| Containers          | Docker / Docker Compose                   |
-| Container registry  | Docker Hub                                |
-| CI/CD               | CI pipeline with Docker + evaluation gate |
-| Logging             | Structured JSON logs                      |
+The project includes a labeled evaluation set of **17 examples**.
+
+Current results:
+
+| Metric                   |     Result |
+| ------------------------ | ---------: |
+| Accuracy                 | **52.94%** |
+| Groundedness             | **94.12%** |
+| Hallucination Rate       |  **5.88%** |
+| Escalation Rate          | **47.06%** |
+| Observed False Negatives |      **0** |
+
+### Interpretation
+
+The strongest signal in the current evaluation is groundedness.
+
+The main weakness observed in this small dataset is **risk-level calibration**.
+
+Incorrect predictions were frequently one risk level higher rather than completely missing the clause's potential risk.
+
+This distinction matters.
+
+A system can be highly grounded while still requiring improvement in classification/calibration.
+
+### Important limitation
+
+The evaluation set contains only 17 labeled examples.
+
+Therefore, these metrics should **not** be interpreted as production-level model performance.
+
+A larger professionally labeled dataset is required to make stronger claims about:
+
+* generalization
+* precision
+* recall
+* calibration
+* domain-specific performance
+* regression detection accuracy
+
+The evaluation framework is intended to make those improvements measurable over time.
+
+---
+
+# Reliability Engineering
+
+The project includes several reliability-oriented controls.
+
+### Idempotent analysis
+
+Repeated analysis requests are handled without blindly creating duplicate analysis state.
+
+### Health checks
+
+Database and API health are explicitly checked.
+
+### Structured logging
+
+Important runtime events are logged in structured form for debugging and operational visibility.
+
+### CI evaluation gate
+
+AI evaluation is incorporated into CI validation rather than being performed only manually.
+
+### Container validation
+
+Docker builds are validated as part of the development workflow.
 
 ---
 
 # Data Model
 
-The system uses persistent models for the major entities in the workflow:
+The core relationships are structured around contract ownership and analysis traceability.
 
 ```text
 User
  │
  └── Contract
-       │
-       ├── Clause
-       │
-       ├── RiskAssessment
-       │
-       ├── RedlineSuggestion
-       │
-       └── AuditLog
-
-PrecedentClause
-       │
-       └── Hybrid Retrieval
+      │
+      ├── Clause
+      │    ├── RiskAssessment
+      │    └── RedlineSuggestion
+      │
+      └── AuditLog
 ```
 
-This allows AI outputs and workflow events to be persisted rather than existing only inside a single model response.
+Database migrations are managed with Alembic.
+
+PostgreSQL provides persistent application state, while pgvector supports vector-based retrieval.
 
 ---
 
-# API Surface
+# API Architecture
 
-The backend exposes protected API workflows for:
+The FastAPI layer exposes protected operations around the contract lifecycle.
 
-* Authentication
-* Contract upload
-* Contract analysis
-* Contract/version comparison
-* Risk assessment
-* Human review
-* Health checks
-* Contract-scoped operations
-
-The API is designed around authenticated, user-scoped resources rather than exposing analysis functionality as an unrestricted endpoint.
-
----
-
-# Engineering Evidence
-
-This project was built around the principle:
-
-> **If a feature cannot be tested, traced, or demonstrated, it is not considered finished.**
-
-Examples of issues discovered and fixed during development include:
-
-* Clause extraction filtering bug
-* Redline persistence bug
-* LangGraph execution/tracing issue
-* Contract ownership isolation vulnerability
-* Signup validation weakness
-* Duplicate clause creation during repeated analysis
-* Docker health-check problems
-* Dependency vulnerability discovered through `pip-audit`
-
-These fixes are part of the project's engineering evidence.
-
----
-
-# Production-Oriented Design Principles
-
-### 1. Evidence over generation
-
-Risk assessments should be supported by retrieved contractual precedent where possible.
-
-### 2. Structured outputs over free-form responses
-
-Pydantic validation provides a predictable interface between the model and application logic.
-
-### 3. Guardrails before downstream action
-
-Model output passes through validation and control layers before redlining or persistence.
-
-### 4. Human oversight for consequential actions
-
-AI-generated recommendations remain reviewable by a human.
-
-### 5. Traceability
-
-Important AI operations are logged and observable.
-
-### 6. Reproducibility
-
-Model and prompt versions are recorded with assessments.
-
-### 7. Security as an engineering layer
-
-Authentication, isolation, injection defense, PII handling, and security testing are integrated into the system.
-
-### 8. Failure discovery is valuable
-
-Security and evaluation tests are used to find weaknesses rather than only produce favorable results.
-
----
-
-# Engineering Completion Matrix
-
-| Layer | Engineering Area              | Status |
-| ----: | ----------------------------- | :----: |
-|     1 | Foundation & Project Setup    |    ✅   |
-|     2 | Database & Data Model         |    ✅   |
-|     3 | Document Ingestion            |    ✅   |
-|     4 | Contract Intelligence         |    ✅   |
-|     5 | Hybrid RAG / Precedent Engine |    ✅   |
-|     6 | Risk Analysis Agent           |    ✅   |
-|     7 | LangGraph Orchestration       |    ✅   |
-|     8 | Redline Agent                 |    ✅   |
-|     9 | Guardrails & Human Safety     |    ✅   |
-|    10 | Version Intelligence          |    ✅   |
-|    11 | API + Authentication          |    ✅   |
-|    12 | Streamlit UI                  |    ✅   |
-|    13 | Evaluation Framework          |    ✅   |
-|    14 | Red-Team Security             |    ✅   |
-|    15 | Observability                 |    ✅   |
-|    16 | Docker / CI-CD Hardening      |    ✅   |
-|    17 | Final Production Review       |    ✅   |
-
-**Engineering implementation: complete.**
-
-The remaining portfolio work is primarily presentation evidence: final demo recording and selected screenshots.
-
----
-
-# Demo
-
-### Planned demonstration flow
+### Authentication
 
 ```text
+POST /auth/signup
+POST /auth/login
+```
 
-
-**Demo:  link
-
-
-### Contract Analysis
+### Contracts
 
 ```text
-TODO — Add screenshot showing:
-Risk assessment + clause analysis + supporting RAG evidence
+POST /contracts/upload
+GET  /contracts
+GET  /contracts/{id}
+POST /contracts/{id}/analyze
 ```
 
-### Version Intelligence
-Version ![Screenshot 2026-09-17 115219.png](../../Pictures/Screenshot%202026-09-17%20115219.png)1 → Version 2 clause comparison + risk regression
+### Analysis
+
+```text
+GET  /contracts/{id}/analysis
+POST /contracts/{id}/review
+POST /contracts/{id}/compare
 ```
 
+### Audit
 
-AI redline suggestion + human review workflow
-![Screenshot 2026-09-17 115050.png](../../Pictures/Screenshot%202026-09-17%20115050.png)
+```text
+GET /contracts/{id}/audit
+```
 
-### Auditability
-Audit log + model/prompt version information
-![Screenshot 2026-09-17 115335.png](../../Pictures/Screenshot%202026-09-17%20115335.png)
+### System
 
-### Observability
-LangSmith workflow trace
-![Screenshot 2026-09-17 115457.png](../../Pictures/Screenshot%202026-09-17%20115457.png)
+```text
+GET /health
+```
+
+Protected operations enforce authentication and resource ownership.
+
 ---
 
-# Local Setup
+# Technology Stack
 
-## Prerequisites
+| Layer               | Technology                   |
+| ------------------- | ---------------------------- |
+| Language            | Python 3.11                  |
+| API                 | FastAPI                      |
+| ORM                 | SQLAlchemy                   |
+| Validation          | Pydantic                     |
+| Database            | PostgreSQL                   |
+| Vector Search       | pgvector                     |
+| Migrations          | Alembic                      |
+| Agent Orchestration | LangGraph                    |
+| LLM Integration     | Gemini                       |
+| Retrieval           | Dense + Keyword / BM25-style |
+| Frontend            | Streamlit                    |
+| Authentication      | JWT                          |
+| Observability       | LangSmith                    |
+| Logging             | Structured Logging           |
+| Containers          | Docker / Docker Compose      |
+| CI/CD               | Automated CI                 |
+| Security Audit      | pip-audit                    |
 
-* Python 3.11+
-* Docker
-* Docker Compose
-* PostgreSQL / pgvector
-* Required LLM API credentials
+---
 
-## Clone
+# Docker & Reproducible Environment
 
-```bash
-git clone <repository-url>
-cd contract-risk-analyzer
-```
+The entire application is containerized to reduce environment-specific differences and provide a reproducible runtime.
 
-## Environment
-
-Create a `.env` file containing the required configuration, including database and model credentials.
-
-Example structure:
-
-```env
-DATABASE_URL=<your-database-url>
-GEMINI_API_KEY=<your-gemini-api-key>
-JWT_SECRET=<your-secret>
-LANGSMITH_API_KEY=<your-langsmith-key>
-```
-
-Never commit secrets to the repository.
-
-## Docker
-
-Build and start the environment:
+Start the application with:
 
 ```bash
 docker compose up --build
 ```
 
-The project includes database and API health checks to verify service readiness.
+The Docker Compose environment contains:
 
----
+```text
+Docker Compose
+      │
+      ├── ContractGuard API
+      │
+      ├── PostgreSQL
+      │
+      └── Streamlit Frontend
+```
 
-# Docker Hub Deployment
-
-Published image:
+Published Docker image:
 
 ```text
 anisakhan4/contractguard-ai:latest
 ```
 
-Pull:
-
-```bash
-docker pull anisakhan4/contractguard-ai:latest
-```
-
-Run using the required environment configuration for the application.
+Containerization provides a consistent development/runtime environment and creates a cleaner path toward cloud deployment.
 
 ---
 
-# Testing
+# Testing Strategy
 
-Run the automated test suite:
+Testing covers more than API endpoints.
 
-```bash
-pytest
-```
+### Functional Testing
 
-The project includes tests covering:
+* Contract ingestion
+* Clause extraction
+* Risk analysis
+* Version comparison
+* Redline generation
 
-* Guardrails
-* Authentication
-* Authorization
+### AI Evaluation
+
+* Labeled examples
+* Accuracy
+* Groundedness
+* Hallucination rate
+* Escalation behavior
+* False-negative tracking
+
+### Security Testing
+
 * Prompt injection
 * JWT tampering
-* File validation
+* Authentication failures
+* Authorization failures
+* Cross-contract access
+* Malicious files
+* Oversized inputs
 * PII handling
 * Output manipulation
-* Cross-contract isolation
-* Regression behavior
+
+### Reliability Testing
+
+* Duplicate analysis requests
+* Database health
+* API health
+* Container builds
+
+### Observability Testing
+
+* LangGraph execution
+* Node-level latency
+* Model execution
+* Audit events
 
 ---
 
-# Security Notes
+# What Makes This Different From a Basic RAG Chatbot?
 
-This project handles contract-related information and therefore treats security as a first-class engineering concern.
+A basic RAG application often looks like:
 
-Implemented controls include:
+```text
+Document
+   ↓
+Embedding
+   ↓
+Vector Search
+   ↓
+LLM
+   ↓
+Answer
+```
 
-* JWT authentication
-* Resource ownership isolation
-* Input validation
-* Prompt-injection detection
-* Malicious file testing
-* Oversized file testing
-* PII detection/redaction
-* Output manipulation testing
-* Dependency auditing
-* Human review
-* Audit logging
+ContractGuard is structured more like an AI application platform:
 
-### Dependency Audit
+```text
+Authentication
+      ↓
+Input Validation
+      ↓
+Document Ingestion
+      ↓
+Clause Extraction
+      ↓
+Hybrid Retrieval
+      ↓
+Agentic Risk Analysis
+      ↓
+Structured Output
+      ↓
+Guardrails
+      ↓
+Version Intelligence
+      ↓
+Controlled Redlining
+      ↓
+Human Review
+      ↓
+Auditability
+      ↓
+Observability
+      ↓
+Evaluation
+```
 
-`pip-audit` was used during development and surfaced **36 CVEs** across dependencies.
+The differentiator is not simply the presence of an LLM.
 
-A critical dependency issue identified during the audit was addressed.
-
-Dependency security should continue to be monitored as the underlying package ecosystem changes.
+It is the engineering surrounding the LLM.
 
 ---
 
-# Known Limitations
+# Key Engineering Lessons
 
-This project is an **engineering prototype / portfolio system with production-oriented architecture**, not a deployed legal-service platform.
+### 1. A graph in source code does not mean the graph is executing
+
+Runtime traces are necessary to verify actual orchestration.
+
+### 2. LLM output is not trusted application data
+
+Structured schemas and validation should exist between model output and business logic.
+
+### 3. Retrieval quality affects downstream reasoning
+
+Better retrieval is not merely a search improvement; it changes the evidence available to the reasoning layer.
+
+### 4. AI security requires AI-specific controls
+
+Traditional API authentication does not protect against prompt injection or malicious model-facing content.
+
+### 5. Human-in-the-loop can be an architectural control
+
+Human review provides a boundary before high-impact recommendations become decisions.
+
+### 6. Observability changes how AI systems are engineered
+
+Tracing exposes runtime behavior, latency bottlenecks, failed paths, and unexpected execution.
+
+### 7. Evaluation should expose weaknesses
+
+A useful evaluation system should reveal where the model is wrong, not simply produce a score.
+
+### 8. Runtime behavior matters as much as architecture
+
+The `/analyze` orchestration issue demonstrated why implementation claims need runtime verification.
+
+---
+
+# Current Limitations
+
+ContractGuard AI is an engineering prototype and **not a production legal decision system**.
 
 Current limitations include:
 
-### Evaluation Dataset
+* Small labeled evaluation dataset
+* Risk-level calibration still needs improvement
+* LLM latency, particularly during risk scoring
+* Larger contract workloads require additional performance testing
+* Larger professionally labeled datasets are required
+* Production-scale load testing is still needed
+* Cloud infrastructure hardening remains future work
+* Enterprise identity integration is not yet implemented
+* Organization-specific compliance requirements would require additional controls
 
-The expanded evaluation contains 17 labeled examples. A production system would require a significantly larger, professionally labeled dataset representing diverse contract types and jurisdictions.
-
-### Model Calibration
-
-The measured 52.94% accuracy demonstrates that additional calibration and evaluation work is required before making high-confidence claims about generalized risk-classification performance.
-
-### Domain Coverage
-
-The current precedent corpus covers four contract niches and does not represent every contract type or jurisdiction.
-
-### Legal Interpretation
-
-The system provides AI-assisted analysis and redline suggestions. It does not replace legal counsel or constitute legal advice.
-
-### Scale Testing
-
-The project has not yet demonstrated production-scale throughput, concurrency, or multi-tenant cloud load performance.
-
-### Model Dependency
-
-AI behavior depends on the selected model, prompt versions, retrieval quality, and available model quotas.
+These limitations are intentionally documented rather than hidden from the project.
 
 ---
 
-# Roadmap
+# Production Roadmap
 
-Potential future improvements include:
+## Model & Evaluation
 
-* Larger professionally labeled evaluation dataset
-* Automated calibration optimization
-* More contract domains and jurisdictions
-* Advanced clause taxonomy
-* Better retrieval reranking
-* Human feedback loops
-* Reviewer analytics
-* Larger-scale load testing
-* Cloud-native deployment
-* Fine-grained role-based access control
-* Additional model providers / fallback models
-* Automated regression monitoring
-* More comprehensive PII and sensitive-data controls
+* Expand professionally labeled datasets
+* Add category-specific evaluation
+* Improve calibration
+* Track precision / recall
+* Add automated evaluation regression detection
+* Evaluate multiple models
+
+## Performance
+
+* Optimize prompts
+* Reduce retrieved context
+* Improve retrieval efficiency
+* Introduce caching
+* Benchmark faster models
+* Move long-running analysis to background workers
+
+## Infrastructure
+
+* Cloud deployment
+* Horizontal scaling
+* Queue-based processing
+* Rate limiting
+* Load testing
+* Production database configuration
+
+## Enterprise Security
+
+* Fine-grained RBAC
+* Enterprise identity provider integration
+* Encryption at rest and in transit
+* Secret-management infrastructure
+* Retention policies
+* Multi-tenant isolation
+* Organization-level security policies
+
+## Observability
+
+* Operational dashboards
+* Latency monitoring
+* Token and cost monitoring
+* Model-quality monitoring
+* Evaluation regression alerts
+* Production drift monitoring
 
 ---
 
-# What Makes This Different From a Basic LLM Contract App?
+# Demo Flow
 
-A basic implementation might look like:
+A complete demonstration can follow this sequence:
 
 ```text
-Upload PDF
-   ↓
-Send text to LLM
-   ↓
-Return summary
+1. Login
+      ↓
+2. Upload Contract
+      ↓
+3. Ingestion
+      ↓
+4. Clause Extraction
+      ↓
+5. Hybrid Retrieval
+      ↓
+6. AI Risk Analysis
+      ↓
+7. Guardrail Validation
+      ↓
+8. Evidence Review
+      ↓
+9. Upload / Compare Version
+      ↓
+10. Detect Risk Regression
+      ↓
+11. Generate Controlled Redline
+      ↓
+12. Human Review
+      ↓
+13. Audit Events
+      ↓
+14. Inspect LangSmith Trace
 ```
 
-This project instead implements:
-
-```text
-                 Contract
-                    │
-                    ▼
-             Clause Intelligence
-                    │
-                    ▼
-            Hybrid Evidence RAG
-                    │
-                    ▼
-             Risk Analysis Agent
-                    │
-                    ▼
-              Guardrail Layer
-                    │
-          ┌─────────┴─────────┐
-          ▼                   ▼
-      Continue             Escalate
-          │                   │
-          ▼                   ▼
-      Redlining          Human Review
-          │                   │
-          └─────────┬─────────┘
-                    ▼
-              Audit + Trace
-                    │
-                    ▼
-          Reproducible Record
-```
-
-The emphasis is therefore not only on **what the LLM generates**, but on:
-
-* How information is retrieved
-* How agents are orchestrated
-* How outputs are validated
-* How unsafe inputs are handled
-* How users are isolated
-* How humans remain involved
-* How AI behavior is evaluated
-* How failures are discovered
-* How execution is traced
-* How results can be reproduced
+For demonstrations where fresh model execution is unavailable because of model quota or provider limitations, previously processed analysis results can be used to demonstrate the application's downstream capabilities without falsely implying a new model invocation.
 
 ---
 
-# Project Status
+# Project Metrics
 
-**Status: Engineering implementation complete**
+| Area                          |           Current Evidence |
+| ----------------------------- | -------------------------: |
+| Precedent clauses             |                    **419** |
+| Labeled evaluation examples   |                     **17** |
+| Accuracy                      |                 **52.94%** |
+| Groundedness                  |                 **94.12%** |
+| Hallucination rate            |                  **5.88%** |
+| Observed false negatives      |                      **0** |
+| Guardrail tests               |          **9 / 9 passing** |
+| Prompt-injection tests        |          **5 / 5 blocked** |
+| Red-team scenarios            |               **9 tested** |
+| Ownership isolation           |        **2-user verified** |
+| LangGraph nodes traced        |                      **4** |
+| Largest observed node latency | **58.59 s (`score_risk`)** |
 
-The system has completed its planned 17-layer engineering scope, including:
-
-* Agentic orchestration
-* Hybrid RAG
-* Risk analysis
-* Redlining
-* Guardrails
-* HITL
-* Version intelligence
-* Authentication
-* Evaluation
-* Red-team security
-* Observability
-* Docker
-* CI/CD
-* Auditability
-
-The final portfolio presentation layer consists of the demo video and selected screenshots.
+These numbers describe the current development/evaluation environment and should not be interpreted as production guarantees.
 
 ---
 
-# Engineering Philosophy
+# Final Perspective
 
-This project follows a simple principle:
+ContractGuard AI started with a simple question:
 
-> **Reliable AI systems are built around models, not just with models.**
+> **Can AI help analyze contracts?**
 
-The LLM is one component of the system.
+The engineering question became more interesting:
 
-The surrounding engineering determines whether its output can be:
+> **How do you build an AI system whose recommendations can be supported by evidence, validated, secured, reviewed, audited, traced, measured, and improved?**
 
-**retrieved → validated → constrained → reviewed → traced → audited → improved**
+That led to an architecture combining:
 
-That is the core engineering focus of Contract Risk Analyzer.
+**Agentic AI + LangGraph + Hybrid RAG + Structured Outputs + Security Guardrails + Version Intelligence + Human-in-the-Loop + Auditability + Observability + Evaluation**
+
+The project demonstrates not only how to build an AI workflow, but how to **engineer around the failure modes of AI systems**.
+
+The model itself is only one component of the system.
+
+> **The AI recommends.
+> The evidence supports.
+> The guardrails constrain.
+> The human reviews.
+> The system records.
+> The engineer can trace what happened.**
 
 ---
 
-## Disclaimer
+# Built With
 
-Contract Risk Analyzer is an AI engineering project for research, demonstration, and portfolio purposes.
-
-It provides **AI-assisted contract analysis and suggestions** and should not be relied upon as legal advice, legal representation, or a substitute for review by qualified legal professionals.
+**Python · FastAPI · LangGraph · LangChain · Gemini · PostgreSQL · pgvector · SQLAlchemy · Pydantic · Streamlit · Docker · Docker Compose · LangSmith · JWT · Alembic**
 
 ---
 
-## Author
+# Author
 
 **Anisa Nabi**
 
-**Target Profile:** Agentic AI Engineer | Multi-Agent Systems | LLMs & AI Automation
+Agentic AI Engineer · AI Automation · LLM Applications · RAG · Multi-Agent Systems
 
-**Core Focus:**
-
-`Agentic AI` · `Generative AI` · `LLMs` · `RAG` · `Multi-Agent Systems` · `LangGraph` · `LangChain` · `AI Automation` · `Python` · `FastAPI` · `PostgreSQL` · `Vector Databases` · `MCP` · `n8n` · `Docker` · `Cloud Deployment`
+GitHub: `anisakhan5554-source`
 
 ---
-
